@@ -1,0 +1,26 @@
+@startuml
+
+title Use Case Joueur Game.html
+
+:Joueur:
+
+rectangle Game {
+(Afficher résumé Aventure)
+(Voir les quêtes)
+(Afficher fiches personnages)
+(Gerer sa fiche de personnage)
+(Envoyer un message dans le chat)
+(Lancer les dés)
+(Afficher le résultat des dés dans le chat)
+}
+
+Joueur -->(Afficher résumé Aventure)
+Joueur -->(Voir les quêtes)
+Joueur -->(Afficher fiches personnages)
+Joueur -->(Gerer sa fiche de personnage)
+Joueur -->(Envoyer un message dans le chat)
+Joueur -->(Lancer les dés)
+
+(Lancer les dés) ..> (Afficher le résultat des dés dans le chat) : include
+
+@enduml
