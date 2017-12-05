@@ -1,0 +1,142 @@
+@startuml
+
+title Diagramme des Classes
+
+package Modele <<Folder>> {
+    package modeleClient <<Frame>> {
+        class Client {
+          -String nom
+          -String adresse
+          -String numTel
+          -String mail 
+          -ArrayList<Recherche> listeRecherches 
+          -ArrayList<Dossier> listeDossiers 
+          -ArrayList<RDV> listeRdvs
+          +void Clients(String nom,String adresse,String numTel,String mail)
+          +String getNom()
+          +String getAdresse()
+          +String getTel()
+          +String getMail()
+          +ArrayList<Recherche> getRecherches()
+          +ArrayList<Dossier> getDossiers()
+          +ArrayList<RDV> getRDVs()
+        }
+        
+        class ClientMoral extends Client{
+        -String formeJuridique
+        +String getFormeJuridique()
+        -String nSIREN
+        +String getNSIREN()
+        }
+    }
+    
+    enum Orientation{
+        NORD 
+        SUD
+        EST
+        OUEST
+    }
+    package modeleBien <<Frame>> {
+        interface Bien {
+            -int id
+            -String adresse
+            -Orientation orient
+            -int prixDemander
+            -Date dateVente
+            -Date dateDispo
+            +String getAdresse()
+            +String getOrient()
+            +int getPrix()
+            +Date getDateVente()
+            +Date getDateDispo()
+        }
+        class Terrain extends Bien{
+            -int surfaceTotal
+            -int longueurFacade
+            +int getSurfaceSol()
+            +int getLongueurFacade()
+        }
+        class Maison extends Terrain{
+            -int surfaceHabitable
+            -int nbPiece
+            -int nbEtage
+            -String moyenChauff
+            +int getSurfaceHabitable()
+            +int getNbPiece()
+            +int getNbEtage()
+            +String getChauffage()
+        }
+        class Appartement extends Bien{
+            -int nbPiece
+            -int etage
+            -int chargesMensuelles
+            +int getNbPiece()
+            +int getEtage()
+            -int getCharges()
+        }
+    }
+    
+    package modeleRDV <<Frame>> {
+        interface RDV{
+        }
+        
+        class RdvMandat extends RDV{
+        }
+        
+        class RdvVisite extends RDV{
+        }
+        
+        class RdvPromesseVente extends RDV{
+        }
+        
+        class RdvRecherche extends RDV{
+        }
+        
+        class RdvConsult extends RDV{
+        }
+    }
+    
+    package modeleAutres <<Frame>> {
+        class Publicites{
+        }
+    }
+}
+
+package Vue <<Folder>> {
+    package vueClient <<Frame>> {
+        class VueClient{
+        }
+        class VueClientMoral{
+        }
+    }
+    package vueBien <<Frame>> {
+        class VueMaison{
+        }
+        
+        class VueAppartement{
+        }
+    }
+    
+    package vueRDV <<Frame>> {
+        class VueRdvMandat{
+        }
+        
+        class VueRdvVisite{
+        }
+        
+        class VueRdvPromesseVente{
+        }
+        
+        class VueRdvRecherche{
+        }
+        
+        class VueRdvConsult{
+        }
+    }
+    
+    package vueAutres<<Frame>> {
+        class VuePublicites{
+        }
+    }
+}
+@enduml
