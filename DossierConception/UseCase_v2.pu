@@ -3,12 +3,42 @@
 title Diagramme des cas d'utilisations
 
 :Users: as U
-:Client: as C
 
-(Créer Client)
-(Créer Bien)
-(Créer RDV)
+rectangle Application{
+  (Créer Client) as CC
+  (Créer Bien) as CB
+  (Créer RDV) as CR
+  (Créer Dossier Vente) as CD
+  (Créer Publicitée) as CP
+  
+(Afficher Statistiques) as AS
+
+  (Voir Information) as VI
+  (Modifier Information) as MI
+  (Bien)
+  (Client)
+  (RDV)
 
 
+}
+left to right direction
+U -->CC
+U -->CB
+U -->CR
+U -->CD
+U -->CP
+
+U -->AS
+
+U -->VI
+U -->MI
+
+VI ..>(Bien)
+VI ..>(Client)
+VI ..>(RDV)
+
+MI ..>(Bien)
+MI ..>(Client)
+MI ..>(RDV)
 
 @enduml
