@@ -37,7 +37,7 @@ package Modele <<Folder>> {
         OUEST
     }
     package modeleBien <<Frame>> {
-        interface Bien {
+        abstract Bien {
             -int id
             -String adresse
             -Orientation orient
@@ -77,22 +77,40 @@ package Modele <<Folder>> {
     }
     
     package modeleRDV <<Frame>> {
-        interface RDV{
+        abstract RDV{
+            -Date dateRDV
+            -Client client
+            +Date getDate()
+            +Client getClient()
         }
         
         class RdvMandat extends RDV{
+            -Bien bienAVendre
+            -Client vendeur
+            +Bien getBienAVendre()
+            +Client getVendeur()
         }
         
         class RdvVisite extends RDV{
+            -Bien bienVisite
+            -Client visiteur
+            +Bien getBienVitise()
+            +Client getVisiteur()
         }
         
         class RdvPromesseVente extends RDV{
+            -Bien bienPromis
+            -Client acheteur
+            +Bien getBienPromis()
+            +Client getAcheteur()
         }
         
         class RdvRecherche extends RDV{
         }
         
         class RdvConsult extends RDV{
+            -Client client
+            +Client getClient()
         }
     }
     
@@ -139,4 +157,47 @@ package Vue <<Folder>> {
         }
     }
 }
+
+package Controleur <<Folder>> {
+    package controleurClient <<Frame>> {
+        class ControleurClient{
+        }
+        class ControleuClientMoral{
+        }
+    }
+    package controleurBien <<Frame>> {
+        class ControleuMaison{
+        }
+        
+        class ControleuAppartement{
+        }
+    }
+    
+    package controleurRDV <<Frame>> {
+        class ControleuRdvMandat{
+        }
+        
+        class ControleuRdvVisite{
+        }
+        
+        class ControleuRdvPromesseVente{
+        }
+        
+        class ControleuRdvRecherche{
+        }
+        
+        class ControleuRdvConsult{
+        }
+    }
+    
+    package controleurAutres<<Frame>> {
+        class ControleuPublicites{
+        }
+    }
+}
+
+Vue -> Modele : READ
+Vue -> Controleur : WRITE
+Controleur -> Modele : MODIFY
+
 @enduml
