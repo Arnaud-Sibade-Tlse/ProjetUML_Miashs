@@ -8,9 +8,9 @@ package Modele <<Folder>> {
           -String nom
           -String adresse
           -String numTel
-          -String mail 
-          -ArrayList<Recherche> listeRecherches 
-          -ArrayList<Dossier> listeDossiers 
+          -String mail
+          -ArrayList<Recherche> listeRecherches
+          -ArrayList<Dossier> listeDossiers
           -ArrayList<RDV> listeRdvs
           +void Clients(String nom,String adresse,String numTel,String mail)
           +String getNom()
@@ -21,7 +21,7 @@ package Modele <<Folder>> {
           +ArrayList<Dossier> getDossiers()
           +ArrayList<RDV> getRDVs()
         }
-        
+
         class ClientMoral extends Client{
         -String formeJuridique
         +String getFormeJuridique()
@@ -29,9 +29,9 @@ package Modele <<Folder>> {
         +String getNSIREN()
         }
     }
-    
+
     enum Orientation{
-        NORD 
+        NORD
         SUD
         EST
         OUEST
@@ -75,7 +75,7 @@ package Modele <<Folder>> {
             -int getCharges()
         }
     }
-    
+
     package modeleRDV <<Frame>> {
         abstract RDV{
             -Date dateRDV
@@ -83,44 +83,56 @@ package Modele <<Folder>> {
             +Date getDate()
             +Client getClient()
         }
-        
+
         class RdvMandat extends RDV{
             -Bien bienAVendre
             -Client vendeur
             +Bien getBienAVendre()
             +Client getVendeur()
         }
-        
+
         class RdvVisite extends RDV{
             -Bien bienVisite
             -Client visiteur
             +Bien getBienVitise()
             +Client getVisiteur()
         }
-        
+
         class RdvPromesseVente extends RDV{
             -Bien bienPromis
             -Client acheteur
             +Bien getBienPromis()
             +Client getAcheteur()
         }
-        
+
         class RdvRecherche extends RDV{
         }
-        
+
         class RdvConsult extends RDV{
             -Client client
             +Client getClient()
         }
     }
-    
+
     package modeleAutres <<Frame>> {
         class Publicites{
+          -TypePub type
+          -String lien
+          +String getLien()
+
         }
+    }
+    enum typePub{
+      video
+      affiche
+      radio
     }
 }
 
 package Vue <<Folder>> {
+    class VueAccueil{
+
+    }
     package vueClient <<Frame>> {
         class VueClient{
         }
@@ -130,28 +142,28 @@ package Vue <<Folder>> {
     package vueBien <<Frame>> {
         class VueMaison{
         }
-        
+
         class VueAppartement{
         }
     }
-    
+
     package vueRDV <<Frame>> {
         class VueRdvMandat{
         }
-        
+
         class VueRdvVisite{
         }
-        
+
         class VueRdvPromesseVente{
         }
-        
+
         class VueRdvRecherche{
         }
-        
+
         class VueRdvConsult{
         }
     }
-    
+
     package vueAutres<<Frame>> {
         class VuePublicites{
         }
@@ -168,28 +180,28 @@ package Controleur <<Folder>> {
     package controleurBien <<Frame>> {
         class ControleuMaison{
         }
-        
+
         class ControleuAppartement{
         }
     }
-    
+
     package controleurRDV <<Frame>> {
         class ControleuRdvMandat{
         }
-        
+
         class ControleuRdvVisite{
         }
-        
+
         class ControleuRdvPromesseVente{
         }
-        
+
         class ControleuRdvRecherche{
         }
-        
+
         class ControleuRdvConsult{
         }
     }
-    
+
     package controleurAutres<<Frame>> {
         class ControleuPublicites{
         }
