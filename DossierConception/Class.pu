@@ -115,23 +115,26 @@ package Modele <<Folder>> {
     }
 
     package modeleAutres <<Frame>> {
+	
+		enum typePub{
+		  VIDEO
+		  AFFICHE
+		  RADIO
+		}
         class Publicites{
           -TypePub type
           -String lien
           +String getLien()
-
         }
-    }
-    enum typePub{
-      video
-      affiche
-      radio
     }
 }
 
+Client "1" *-- "*" Bien: Composition
+Client "1" *-- "*" Recherche: Composition
+Client "1" *-- "*" RDV: Composition
+
 package Vue <<Folder>> {
     class VueAccueil{
-
     }
     package vueClient <<Frame>> {
         class VueClient{
@@ -167,6 +170,10 @@ package Vue <<Folder>> {
     package vueAutres<<Frame>> {
         class VuePublicites{
         }
+        class VueRecherche{
+        }
+		class VueResultat{
+        }
     }
 }
 
@@ -174,36 +181,38 @@ package Controleur <<Folder>> {
     package controleurClient <<Frame>> {
         class ControleurClient{
         }
-        class ControleuClientMoral{
+        class ControleurClientMoral{
         }
     }
     package controleurBien <<Frame>> {
-        class ControleuMaison{
+        class ControleurMaison{
         }
 
-        class ControleuAppartement{
+        class ControleurAppartement{
         }
     }
 
     package controleurRDV <<Frame>> {
-        class ControleuRdvMandat{
+        class ControleurRdvMandat{
         }
 
-        class ControleuRdvVisite{
+        class ControleurRdvVisite{
         }
 
-        class ControleuRdvPromesseVente{
+        class ControleurRdvPromesseVente{
         }
 
-        class ControleuRdvRecherche{
+        class ControleurRdvRecherche{
         }
 
-        class ControleuRdvConsult{
+        class ControleurRdvConsult{
         }
     }
 
     package controleurAutres<<Frame>> {
-        class ControleuPublicites{
+        class ControleurPublicites{
+        }
+        class ControleurRecherche{
         }
     }
 }
@@ -211,5 +220,6 @@ package Controleur <<Folder>> {
 Vue -> Modele : READ
 Vue -> Controleur : WRITE
 Controleur -> Modele : MODIFY
+
 
 @enduml
