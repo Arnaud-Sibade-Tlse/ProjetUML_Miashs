@@ -9,7 +9,6 @@ package Modele <<Folder>> {
           -String adresse
           -String numTel
           -String mail
-          -ArrayList<Recherche> listeRecherches
           -ArrayList<Dossier> listeDossiers
           -ArrayList<RDV> listeRdvs
           +void Clients(String nom,String adresse,String numTel,String mail)
@@ -17,51 +16,57 @@ package Modele <<Folder>> {
           +String getAdresse()
           +String getTel()
           +String getMail()
-          +ArrayList<Recherche> getRecherches()
           +ArrayList<Dossier> getDossiers()
           +ArrayList<RDV> getRDVs()
         }
-
+    class ClientPhysique{}
         class ClientMoral extends Client{
         -String formeJuridique
-        +String getFormeJuridique()
         -String nSIREN
+        +void ClientMoral(String juridic, String siren)
+        +String getFormeJuridique()
         +String getNSIREN()
         }
     }
 
-    enum Orientation{
-        NORD
-        SUD
-        EST
-        OUEST
-    }
     package modeleBien <<Frame>> {
+        enum Orientation{
+            NORD
+            SUD
+            EST
+            OUEST
+         }
         abstract Bien {
             -int id
+            -Client proprio
             -String adresse
             -Orientation orient
             -int prixDemander
             -Date dateVente
             -Date dateDispo
+            +void Bien(int ID, String adresse, Orientation orient, int prixDemander,Date dateVente, Date dateDispo) 
             +String getAdresse()
             +String getOrient()
             +int getPrix()
             +Date getDateVente()
             +Date getDateDispo()
+            +Client getProprio()
+            +void setClient()
         }
         class Terrain extends Bien{
-            -int surfaceTotal
-            -int longueurFacade
-            +int getSurfaceSol()
-            +int getLongueurFacade()
+            -double surfaceTotal
+            -double longueurFacade
+            +void Terrain(double surfaceTotal, double lgrFacade)
+            +double getSurfaceSol()
+            +double getLongueurFacade()
         }
         class Maison extends Terrain{
-            -int surfaceHabitable
+            -double surfaceHabitable
             -int nbPiece
             -int nbEtage
             -String moyenChauff
-            +int getSurfaceHabitable()
+            +void Maison(double surfaceHabit, int piece, int etage, String chauff)
+            +double getSurfaceHabitable()
             +int getNbPiece()
             +int getNbEtage()
             +String getChauffage()
@@ -69,10 +74,11 @@ package Modele <<Folder>> {
         class Appartement extends Bien{
             -int nbPiece
             -int etage
-            -int chargesMensuelles
+            -double chargesMensuelles
+            +void Appartement(int piece, int etage, double charges)
             +int getNbPiece()
             +int getEtage()
-            -int getCharges()
+            +double getCharges()
         }
     }
 
@@ -80,6 +86,7 @@ package Modele <<Folder>> {
         abstract RDV{
             -Date dateRDV
             -Client client
+            +void RDV(Date dateRDV, Client client)
             +Date getDate()
             +Client getClient()
         }
@@ -87,6 +94,7 @@ package Modele <<Folder>> {
         class RdvMandat extends RDV{
             -Bien bienAVendre
             -Client vendeur
+            +void RdvMandat(Bien bienAVendre, Client vendeur)
             +Bien getBienAVendre()
             +Client getVendeur()
         }
@@ -94,6 +102,7 @@ package Modele <<Folder>> {
         class RdvVisite extends RDV{
             -Bien bienVisite
             -Client visiteur
+            +void RdvVisite(Bien bienVisite, Client visiteur)
             +Bien getBienVitise()
             +Client getVisiteur()
         }
@@ -101,6 +110,7 @@ package Modele <<Folder>> {
         class RdvPromesseVente extends RDV{
             -Bien bienPromis
             -Client acheteur
+            +void RdvPromesseVente(Bien bienPromis, Client acheteur)
             +Bien getBienPromis()
             +Client getAcheteur()
         }
@@ -111,6 +121,8 @@ package Modele <<Folder>> {
         class RdvConsult extends RDV{
             -Client client
             +Client getClient()
+            +void RdvConsult(Client client)
+
         }
     }
 
@@ -130,7 +142,6 @@ package Modele <<Folder>> {
 }
 
 Client "1" *-- "*" Bien: Composition
-Client "1" *-- "*" Recherche: Composition
 Client "1" *-- "*" RDV: Composition
 
 package Vue <<Folder>> {
