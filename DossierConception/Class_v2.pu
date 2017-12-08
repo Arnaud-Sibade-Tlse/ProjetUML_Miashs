@@ -170,87 +170,9 @@ Client "1" *-- "*" Bien: Composition
 Client "1" *-- "*" RDV: Composition
 
 package Vue <<Folder>> {
-    class VueAccueil{
-    }
-    package vueClient <<Frame>> {
-        class VueClient{
-        }
-        class VueClientMoral{
-        }
-    }
-    package vueBien <<Frame>> {
-        class VueMaison{
-        }
-
-        class VueAppartement{
-        }
-    }
-
-    package vueRDV <<Frame>> {
-        class VueRdvMandat{
-        }
-
-        class VueRdvVisite{
-        }
-
-        class VueRdvPromesseVente{
-        }
-
-        class VueRdvRecherche{
-        }
-
-        class VueRdvConsult{
-        }
-    }
-
-    package vueAutres<<Frame>> {
-        class VuePublicites{
-        }
-        class VueRecherche{
-        }
-		class VueResultat{
-        }
-    }
 }
 
 package Controleur <<Folder>> {
-    package controleurClient <<Frame>> {
-        class ControleurClient{
-        }
-        class ControleurClientMoral{
-        }
-    }
-    package controleurBien <<Frame>> {
-        class ControleurMaison{
-        }
-
-        class ControleurAppartement{
-        }
-    }
-
-    package controleurRDV <<Frame>> {
-        class ControleurRdvMandat{
-        }
-
-        class ControleurRdvVisite{
-        }
-
-        class ControleurRdvPromesseVente{
-        }
-
-        class ControleurRdvRecherche{
-        }
-
-        class ControleurRdvConsult{
-        }
-    }
-
-    package controleurAutres<<Frame>> {
-        class ControleurPublicites{
-        }
-        class ControleurRecherche{
-        }
-    }
 }
 
 Vue -> Modele : READ
