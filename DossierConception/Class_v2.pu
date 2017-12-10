@@ -27,9 +27,13 @@ package Modele <<Folder>> {
           -ArrayList<RDV> listeRdvs
           +void Client(String nom,String adresse,String numTel,String mail)
           +String getNom()
+          +void setNom(String nom)
           +String getAdresse()
+          +void setAdresse(String adresse)
           +String getTel()
+          +void setTel(String tel)
           +String getMail()
+          +void setMail(String mail)
           +ArrayList<Dossier> getDossiers()
           +ArrayList<RDV> getRDVs()
         }
@@ -41,7 +45,9 @@ package Modele <<Folder>> {
         -String nSIREN
         +void ClientMoral(String juridic, String siren)
         +String getFormeJuridique()
+        +void setFormeJuridique(String formJurid)
         +String getNSIREN()
+        +void setSIREN(String siren)
         }
     }
 
@@ -62,19 +68,26 @@ package Modele <<Folder>> {
             -Date dateDispo
             +void Bien(int ID, String adresse, Orientation orient, int prixDemander,Date dateVente, Date dateDispo) 
             +String getAdresse()
+            +void setAdresse(String adresse)
             +String getOrient()
+            +void setOrient(Orientation orient)
             +int getPrix()
+            +void setPrix(int prix)
             +Date getDateVente()
+            +void setDateVente(Date vente)
             +Date getDateDispo()
+            +void setDateDispo(Date dispo)
             +Client getProprio()
-            +void setClient()
+            +void setClient(Client client)
         }
         class Terrain extends Bien{
             -double surfaceTotal
             -double longueurFacade
             +void Terrain(double surfaceTotal, double lgrFacade)
             +double getSurfaceSol()
+            +void setSurfaceSol(double surface)
             +double getLongueurFacade()
+            +void setLongueurFacade(double facade)
         }
         class Maison extends Bien{
             -Terrain terrain
@@ -82,12 +95,16 @@ package Modele <<Folder>> {
             -int nbPiece
             -int nbEtage
             -String moyenChauff
-            +void Maison(double surfaceHabit, int piece, int etage, String chauff)
+            +void Maison(double surfaceHabit, int piece, int etage, String chauff,Terrain terrain)
             +Terrain getTerrain()
             +double getSurfaceHabitable()
+            +void setSurfaceHabitable(double habitable)
             +int getNbPiece()
+            +void setNbPiece(int nbPiece)
             +int getNbEtage()
+            +void setNbEtage(int nbEtage)
             +String getChauffage()
+            +void setChauffage(String chauffage)
         }
         class Appartement extends Bien{
             -int nbPiece
@@ -95,8 +112,11 @@ package Modele <<Folder>> {
             -double chargesMensuelles
             +void Appartement(int piece, int etage, double charges)
             +int getNbPiece()
+            +void setNbPiece(int nbPiece)
             +int getEtage()
+            +void setNbEtage(int nbEtage)
             +double getCharges()
+            +void setCharges(double charges)
         }
         Terrain  *-- "0.*" Maison
     }
@@ -105,9 +125,12 @@ package Modele <<Folder>> {
         abstract RDV{
             -Date dateRDV
             -Client client
-            +void RDV(Date dateRDV, Client client)
+            -DOssier dossier
+            +void RDV(Date dateRDV, Client client, Dossier dossier)
             +Date getDate()
+            +void setDate(Date dateRDV)
             +Client getClient()
+            +Client getDossier()
         }
 
         class RdvMandat extends RDV{
@@ -135,6 +158,9 @@ package Modele <<Folder>> {
         }
 
         class RdvRecherche extends RDV{
+            -Client acheteur
+            +void RdvRecherche( Client acheteur)
+            +Client getAcheteur()
         }
 
         class RdvConsult extends RDV{
@@ -155,7 +181,9 @@ package Modele <<Folder>> {
         class Publicites{
           -TypePub type
           -String lien
+          +void Publicité(TypePub type, String lien)
           +String getLien()
+          +void setLien(String link)
         }
 		
 		enum EtatDossier{
@@ -167,8 +195,9 @@ package Modele <<Folder>> {
 		class Dossier{
 			-EtatDossier etat
 			-Bien bienConserne
-			+void Dossier()
+			+void Dossier(Bien bienConserne)
 			+EtatDossier getEtat()
+			+void setEtat(EtatDossier etat)
 			+Bien getBienConserne()
 		}
     }
