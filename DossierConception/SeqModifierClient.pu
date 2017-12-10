@@ -1,0 +1,18 @@
+@startuml
+
+title Diagramme Séquence de la modification d'un Client
+
+actor User as U
+
+U -> MyAgencyManager :getListeClients()
+
+MyAgencyManager -> vueClient : vueClient(c)
+
+U //-- vueClient :afficher Client
+
+U -> vueClient :Saisit Information(s)
+U -> vueClient :Valide saisie
+
+vueClient -> ControleurClient :Verifie Information(s)
+ControleurClient -> Client :Modifie Information(s)
+@enduml
