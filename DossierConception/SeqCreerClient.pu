@@ -1,0 +1,17 @@
+@startuml
+
+title Diagramme Séquence de la création d'un Client
+
+actor User as U
+U -> MyAgencyManager :CréerClient()
+
+MyAgencyManager -> Client :new Client() c
+
+MyAgencyManager -> vueClient : vueClient(c)
+
+U -> vueClient :Saisit Information(s)
+U -> vueClient :Valide saisie
+
+vueClient -> ControleurClient :Verifie Information(s)
+ControleurClient -> Client :Modifie Information(s)
+@enduml
