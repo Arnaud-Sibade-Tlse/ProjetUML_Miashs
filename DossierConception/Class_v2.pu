@@ -8,9 +8,11 @@ package Modele <<Folder>> {
         class MyAgencyManager {
           -ArrayList<Client> listeClients
           -ArrayList<Bien> listeBiens
+          -ArrayList<RDV> listeRdvs
           +void MyAgencyManager()
           +ArrayList<Client> getListeClients()
           +ArrayList<Bien> getListeBiens()
+		  +ArrayList<RDV> getListeRdvs()
         }
     }
     package modeleClient <<Frame>> {
@@ -157,6 +159,7 @@ package Modele <<Folder>> {
     
     MyAgencyManager "1" <-- "*" Client
     MyAgencyManager "1" <-- "*" Bien
+    MyAgencyManager "1" <-- "*" RDV
     
     Client <--  RDV
     
