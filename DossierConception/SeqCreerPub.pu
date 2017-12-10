@@ -1,0 +1,17 @@
+@startuml
+
+title Diagramme Séquence de la création d'un PUB
+
+actor User as U
+U -> MyAgencyManager :CréerPUB()
+
+MyAgencyManager -> PUB :new PUB() c
+
+MyAgencyManager -> vuePUB : vuePUB(c)
+
+U -> vuePUB :Saisit Information(s)
+U -> vuePUB :Valide saisie
+
+vuePUB -> ControleurPUB :Verifie Information(s)
+ControleurPUB -> PUB :Modifie Information(s)
+@enduml

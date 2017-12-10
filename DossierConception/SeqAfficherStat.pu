@@ -1,0 +1,11 @@
+@startuml
+
+title Diagramme Séquence de l'affichage des Statistiques
+
+actor User as U
+U -> MyAgencyManager : AfficherStat()
+U -> vueStat :SelectionnerObjetStat(Object o)
+vueStat -> ControleurStat : verifieObject(o)
+ControleurStat -> ControleurObject :renvoieLeControleurObjet
+ControleurObject -> vueStat: renvoieStatObjet()
+@enduml

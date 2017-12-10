@@ -5,13 +5,18 @@ title Diagramme Séquence de la création  d'un Dossier
 actor User as U
 U -> MyAgencyManager :CréerDossier()
 
-MyAgencyManager -> Dossier :new Dossier(Bien b) d
-Dossier -> ControleurBien : Verifie Information(b)
+MyAgencyManager -> Dossier :new Dossier() d
 MyAgencyManager -> vueDossier : vueDossier(d)
 
 U -> vueDossier :Saisit Information(s)
+U -> vueDossier :Saisit Bien(b)
+
 U -> vueDossier :Valide saisie
 
 vueDossier -> ControleurDossier :Verifie Information(s)
+vueDossier -> ControleurBien :Verifie Information(b)
+ControleurBien -> Dossier :ModifieBien(b)
+
+
 ControleurDossier -> Dossier :Modifie Information(s)
 @enduml
