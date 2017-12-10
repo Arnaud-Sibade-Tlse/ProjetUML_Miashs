@@ -10,13 +10,13 @@ rectangle MyAgencyManager{
   (Créer RDV) as CR
   (Créer Dossier Vente) as CD
   (Créer Publicitée) as CP
-  (Créer Mandat) as CM
-  (Effectuer Vente) as CV
+  (Changer Etat) as CE
 (Afficher Statistiques) as AS
 
   (Voir Bien) as VB
   (Voir Client) as VC
   (Voir RDV) as VR
+  (Voir Dossier) as VD
   (Modifier Bien) as MB
   (Modifier Client) as MC
   (Modifier RDV) as MR
@@ -28,11 +28,10 @@ U -->CB
 U -->CD
 U -->CP
 
-CD <.. CM : <<extend>>
-CD <.. CV : <<extend>>
-CM <.. CR : <<include>>
-CV <.. CR : <<include>>
 
+U -> VD
+VD <.. CE : <<extend>>
+CE <.. CR : <<include>>
 
 U --> VC
 VC <.. MC : <<extend>>
@@ -44,3 +43,4 @@ U -->AS
 
 
 @enduml
+

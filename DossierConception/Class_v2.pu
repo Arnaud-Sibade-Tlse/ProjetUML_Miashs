@@ -160,6 +160,7 @@ package Modele <<Folder>> {
 		
 		enum EtatDossier{
 		  MANDAT
+		  RECHERCHE
 		  PROMESSEVENTE
 		  CLOS
 		}
