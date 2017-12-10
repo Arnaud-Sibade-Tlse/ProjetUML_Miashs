@@ -10,6 +10,9 @@ MyAgencyManager -> Bien :new Bien() b
 MyAgencyManager -> vueBien : vueBien(b)
 
 vueBien -> MyAgencyManager : getClients()
+
+U //-- vueBien :afficher Client
+
 U -> vueBien :Choisir Propriétaire
 U -> vueBien :Saisit Information(s)
 U -> vueBien :Valide saisie
