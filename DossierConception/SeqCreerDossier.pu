@@ -11,6 +11,8 @@ MyAgencyManager -> vueDossier : vueDossier(d)
 vueDossier -> MyAgencyManager : getClients()
 vueDossier -> MyAgencyManager : getBiens()
 
+U //-- vueDossier :afficher Dossier
+
 U -> vueDossier :Saisit Information(s)
 U -> vueDossier :Choisir Client
 U -> vueDossier :Choisir Bien

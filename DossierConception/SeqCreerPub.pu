@@ -9,6 +9,8 @@ MyAgencyManager -> PUB :new PUB() c
 
 MyAgencyManager -> vuePUB : vuePUB(c)
 
+U //-- vuePUB :afficher Publicité
+
 U -> vuePUB :Saisit Information(s)
 U -> vuePUB :Valide saisie
 
