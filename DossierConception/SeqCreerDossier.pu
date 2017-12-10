@@ -10,6 +10,8 @@ MyAgencyManager -> vueDossier : vueDossier(d)
 
 U -> vueDossier :Saisit Information(s)
 U -> vueDossier :Saisit Bien(b)
+U -> vueDossier :ChangerEtat()
+
 
 U -> vueDossier :Valide saisie
 
