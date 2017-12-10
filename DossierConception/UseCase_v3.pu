@@ -11,7 +11,7 @@ rectangle MyAgencyManager{
   (Créer Dossier Vente) as CD
   (Créer Publicitée) as CP
   (Changer Etat) as CE
-(Afficher Statistiques) as AS
+  (Afficher Statistiques) as AS
 
   (Voir Bien) as VB
   (Voir Client) as VC
