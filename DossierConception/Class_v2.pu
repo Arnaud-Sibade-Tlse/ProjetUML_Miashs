@@ -9,10 +9,12 @@ package Modele <<Folder>> {
           -ArrayList<Client> listeClients
           -ArrayList<Bien> listeBiens
           -ArrayList<RDV> listeRdvs
+          -ArrayList<Publicites> listePubs
           +void MyAgencyManager()
           +ArrayList<Client> getListeClients()
           +ArrayList<Bien> getListeBiens()
 		  +ArrayList<RDV> getListeRdvs()
+		  +ArrayList<Publicites> getListePubs()
         }
     }
     package modeleClient <<Frame>> {
@@ -145,7 +147,7 @@ package Modele <<Folder>> {
 
     package modeleAutres <<Frame>> {
 	
-		enum typePub{
+		enum TypePub{
 		  VIDEO
 		  AFFICHE
 		  RADIO
@@ -155,22 +157,39 @@ package Modele <<Folder>> {
           -String lien
           +String getLien()
         }
+		
+		enum EtatDossier{
+		  MANDAT
+		  PROMESSEVENTE
+		  CLOS
+		}
+		class Dossier{
+			-EtatDossier etat
+			-Bien bienConserne
+			+void Dossier()
+			+EtatDossier getEtat()
+			+Bien getBienConserne()
+		}
     }
     
     MyAgencyManager "1" <-- "*" Client
     MyAgencyManager "1" <-- "*" Bien
     MyAgencyManager "1" <-- "*" RDV
-    
-    Client <--  RDV
+    MyAgencyManager "1" <-- "*" Publicites
     
     RdvMandat  <--  Client
     RdvVisite  <--  Client
     RdvPromesseVente  <--  Client
     RdvConsult  <--  Client
+	
+	Bien <-- Orientation
+	Dossier <-- EtatDossier
+	Publicites <-- TypePub
 }
 
 Client "1" *-- "*" Bien: Composition
 Client "1" *-- "*" RDV: Composition
+Client "1" *-- "*" Dossier: Composition
 
 package Vue <<Folder>> {
 }
