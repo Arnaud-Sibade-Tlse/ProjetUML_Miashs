@@ -1,0 +1,17 @@
+@startuml
+
+title Diagramme Séquence de la création  d'un Dossier
+
+actor User as U
+U -> MyAgencyManager :CréerDossier()
+
+MyAgencyManager -> Dossier :new Dossier(Bien b) d
+Dossier -> ControleurBien : Verifie Information(b)
+MyAgencyManager -> vueDossier : vueDossier(d)
+
+U -> vueDossier :Saisit Information(s)
+U -> vueDossier :Valide saisie
+
+vueDossier -> ControleurDossier :Verifie Information(s)
+ControleurDossier -> Dossier :Modifie Information(s)
+@enduml
