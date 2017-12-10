@@ -11,9 +11,9 @@ MyAgencyManager -> vueBien : vueBien(b)
 
 vueBien -> MyAgencyManager : getClients()
 
-U //-- vueBien :afficher Client
+U //-- vueBien :afficher Bien
 
-U -> vueBien :Choisir Propriétaire
+U -> vueBien :Choisir Client
 U -> vueBien :Saisit Information(s)
 U -> vueBien :Valide saisie
 

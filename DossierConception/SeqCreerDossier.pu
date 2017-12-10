@@ -8,17 +8,16 @@ U -> MyAgencyManager :CréerDossier()
 MyAgencyManager -> Dossier :new Dossier() d
 MyAgencyManager -> vueDossier : vueDossier(d)
 
-U -> vueDossier :Saisit Information(s)
-U -> vueDossier :Saisit Bien(b)
-U -> vueDossier :ChangerEtat()
+vueDossier -> MyAgencyManager : getClients()
+vueDossier -> MyAgencyManager : getBiens()
 
+U -> vueDossier :Saisit Information(s)
+U -> vueDossier :Choisir Client
+U -> vueDossier :Choisir Bien
 
 U -> vueDossier :Valide saisie
 
 vueDossier -> ControleurDossier :Verifie Information(s)
-vueDossier -> ControleurBien :Verifie Information(b)
-ControleurBien -> Dossier :ModifieBien(b)
-
 
 ControleurDossier -> Dossier :Modifie Information(s)
 @enduml
