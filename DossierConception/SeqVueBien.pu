@@ -1,0 +1,13 @@
+@startuml
+
+title Diagramme Séquence de la vue d'un Bien
+
+actor User as U
+
+U -> MyAgencyManager :getListeBiens()
+
+MyAgencyManager -> vueBien : afficherBien(b)
+
+U //-- vueBien :afficher Bien
+
+@enduml
