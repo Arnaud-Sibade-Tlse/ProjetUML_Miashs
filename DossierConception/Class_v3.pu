@@ -23,24 +23,54 @@ package Modele <<Folder>> {
     }
     package modeleClient <<Frame>> {
         abstract Client {
+        -String nom
+          -String adresse
+          -String numTel
+          -String mail
+          +void Client(String nom,String adresse,String numTel,String mail)
+
         }
         class ClientPhysique extends Client{
         }
     
         class ClientMoral extends Client{
+            -String formeJuridique
+            -String nSIREN
+            +void ClientMoral(String juridic, String siren)
         }
     }
 
     package modeleBien <<Frame>> {
         enum Orientation{
+            NORD
+            SUD
+            EST
+            OUEST
          }
         abstract Bien {
+            -int id
+            -String adresse
+            -Orientation orient
+            +void Bien(String adresse, Orientation orient) 
         }
         class Terrain extends Bien{
+        -double surfaceTotal
+            -double longueurFacade
+            +void Terrain(String adresse, Orientation orient,double surfaceTotal, double lgrFacade)
         }
         class Maison extends Bien{
+            -Terrain terrain
+            -double surfaceHabitable
+            -int nbPiece
+            -int nbEtage
+            -String moyenChauff
+            +void Maison(String adresse, Orientation orient,double surfaceHabit, int piece, int etage, String chauff,Terrain terrain)
         }
         class Appartement extends Bien{
+        -int nbPiece
+            -int etage
+            -double chargesMensuelles
+            +void Appartement(String adresse, Orientation orient,int piece, int etage, double charges)
         }
         Terrain  o-- "0.*" Maison
     }
