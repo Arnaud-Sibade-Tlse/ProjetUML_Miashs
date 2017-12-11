@@ -1,63 +1,64 @@
 @startuml
 
-title Diagramme Séquence de la gestion d'un RDV
+title Diagramme Séquence de la gestion d'une Publicité
 
 actor Agent as A
 
 
-A -> vueAllRdvs 
-A //-- vueAllRdvs :afficher liste RDV
+A -> vueAllPublicites 
+A //-- vueAllPublicites :afficher liste Publicites
 
-alt Créer RDV
-vueAllRdvs -> vueRDVs :nouveauRDV()
-
-
-A //-- vueRDVs :afficher RDV vide
-
-A -> vueRDVs : saisie Information(s)
-A -> vueRDVs : valide
-
-vueRDVs -> ControleurRDV : verifRDV()
-
-ControleurRDV -> ControleurRDV : p = new RDV(info)
-ControleurRDV -> MyAgencyManager : listeRDV.add(p)
-
-MyAgencyManager -> vueAllRdvs : actualiserListe()
-
-A //-- vueAllRdvs : afficher nouvelle liste
+alt Créer Publicité
+vueAllPublicites -> vuePublicites :nouvellePublicites()
 
 
-else Afficher RDV
-vueAllRdvs -> vueRDVs : afficherRDVs(p)
-A //-- vueRDVs :afficher p
+A //-- vuePublicites :afficher Publicité vide
 
-else Modifier RDV
+A -> vuePublicites : saisie Information(s)
+A -> vuePublicites : valide
 
-vueAllRdvs -> vueRDVs : modifierRDVs(p)
-A //-- vueRDVs :afficher p
+vuePublicites -> ControleurPublicites : verifPublicite()
 
-A -> vueRDVs : saisie Information(s)
-A -> vueRDVs : valide
+ControleurPublicites -> ControleurPublicites : p = new Publicites(info)
+ControleurPublicites -> MyAgencyManager : listePubs.add(p)
 
-vueRDVs -> ControleurRDV : verifPub()
+MyAgencyManager -> vueAllPublicites : actualiserListe()
 
-ControleurRDV -> MyAgencyManager : listeRDV.get(p)
-MyAgencyManager -> ControleurRDV : p
+A //-- vueAllPublicites : afficher nouvelle liste
+
+
+else Afficher Publicité
+vueAllPublicites -> vuePublicites : afficherPublicites(p)
+A //-- vuePublicites :afficher p
+
+else Modifier Publicité
+
+vueAllPublicites -> vuePublicites : modifierPublicites(p)
+A //-- vuePublicites :afficher p
+
+A -> vuePublicites : saisie Information(s)
+A -> vuePublicites : valide
+
+vuePublicites -> ControleurPublicites : verifPub()
+
+ControleurPublicites -> MyAgencyManager : listePubs.get(p)
+MyAgencyManager -> ControleurPublicites : p
 
 loop attribute a in p
-ControleurRDV -> ControleurRDV :p.setA(info.a)
+ControleurPublicites -> ControleurPublicites :p.setA(info.a)
 end
 
-ControleurRDV -> vueRDVs : afficherRDVs()
-A //-- vueRDVs :afficher p
-else Supprimer RDV
-vueAllRdvs -> ControleurRDV : supprimerRDVs(p)
-A //-- ControleurRDV : Supprimer ?
+ControleurPublicites -> vuePublicites : afficherPublicites()
+A //-- vuePublicites :afficher p
+
+else Supprimer Publicité
+vueAllPublicites -> ControleurPublicites : supprimerPublicites(p)
+A //-- ControleurPublicites : Supprimer ?
 alt oui
-ControleurRDV -> MyAgencyManager : listeRDV.remove(p)
-MyAgencyManager -> vueAllRdvs : actualiserListe()
+ControleurPublicites -> MyAgencyManager : listePublicites.remove(p)
+MyAgencyManager -> vueAllPublicites : actualiserListe()
 
 end
-A //-- vueAllRdvs : afficher nouvelle liste
+A //-- vueAllPublicites : afficher nouvelle liste
 end
 @enduml
