@@ -1,0 +1,235 @@
+@startuml
+
+title Diagramme des Classes
+
+package Modele <<Folder>> {
+
+    package modeleAgence<<Frame>> {
+        class MyAgencyManager {
+          -ArrayList<Client> listeClients
+          -ArrayList<Bien> listeBiens
+          -ArrayList<RDV> listeRdvs
+          -ArrayList<Publicites> listePubs
+          +void MyAgencyManager()
+          +ArrayList<Client> getListeClients()
+          +ArrayList<Bien> getListeBiens()
+		  +ArrayList<RDV> getListeRdvs()
+		  +ArrayList<Publicites> getListePubs()
+        }
+    }
+    package modeleClient <<Frame>> {
+        abstract Client {
+          -String nom
+          -String adresse
+          -String numTel
+          -String mail
+          -ArrayList<Dossier> listeDossiers
+          -ArrayList<RDV> listeRdvs
+          +void Client(String nom,String adresse,String numTel,String mail)
+          +String getNom()
+          +void setNom(String nom)
+          +String getAdresse()
+          +void setAdresse(String adresse)
+          +String getTel()
+          +void setTel(String tel)
+          +String getMail()
+          +void setMail(String mail)
+          +ArrayList<Dossier> getDossiers()
+          +ArrayList<RDV> getRDVs()
+        }
+        class ClientPhysique extends Client{
+        }
+    
+        class ClientMoral extends Client{
+        -String formeJuridique
+        -String nSIREN
+        +void ClientMoral(String juridic, String siren)
+        +String getFormeJuridique()
+        +void setFormeJuridique(String formJurid)
+        +String getNSIREN()
+        +void setSIREN(String siren)
+        }
+    }
+
+    package modeleBien <<Frame>> {
+        enum Orientation{
+            NORD
+            SUD
+            EST
+            OUEST
+         }
+        abstract Bien {
+            -int id
+            -Client proprio
+            -String adresse
+            -Orientation orient
+            -int prixDemander
+            -Date dateVente
+            -Date dateDispo
+            +void Bien(int ID, String adresse, Orientation orient, int prixDemander,Date dateVente, Date dateDispo) 
+            +String getAdresse()
+            +void setAdresse(String adresse)
+            +String getOrient()
+            +void setOrient(Orientation orient)
+            +int getPrix()
+            +void setPrix(int prix)
+            +Date getDateVente()
+            +void setDateVente(Date vente)
+            +Date getDateDispo()
+            +void setDateDispo(Date dispo)
+            +Client getProprio()
+            +void setClient(Client client)
+        }
+        class Terrain extends Bien{
+            -double surfaceTotal
+            -double longueurFacade
+            +void Terrain(double surfaceTotal, double lgrFacade)
+            +double getSurfaceSol()
+            +void setSurfaceSol(double surface)
+            +double getLongueurFacade()
+            +void setLongueurFacade(double facade)
+        }
+        class Maison extends Bien{
+            -Terrain terrain
+            -double surfaceHabitable
+            -int nbPiece
+            -int nbEtage
+            -String moyenChauff
+            +void Maison(double surfaceHabit, int piece, int etage, String chauff,Terrain terrain)
+            +Terrain getTerrain()
+            +double getSurfaceHabitable()
+            +void setSurfaceHabitable(double habitable)
+            +int getNbPiece()
+            +void setNbPiece(int nbPiece)
+            +int getNbEtage()
+            +void setNbEtage(int nbEtage)
+            +String getChauffage()
+            +void setChauffage(String chauffage)
+        }
+        class Appartement extends Bien{
+            -int nbPiece
+            -int etage
+            -double chargesMensuelles
+            +void Appartement(int piece, int etage, double charges)
+            +int getNbPiece()
+            +void setNbPiece(int nbPiece)
+            +int getEtage()
+            +void setNbEtage(int nbEtage)
+            +double getCharges()
+            +void setCharges(double charges)
+        }
+        Terrain  *-- "0.*" Maison
+    }
+
+    package modeleRDV <<Frame>> {
+        abstract RDV{
+            -Date dateRDV
+            -Client client
+            -DOssier dossier
+            +void RDV(Date dateRDV, Client client, Dossier dossier)
+            +Date getDate()
+            +void setDate(Date dateRDV)
+            +Client getClient()
+            +Client getDossier()
+        }
+
+        class RdvMandat extends RDV{
+            -Bien bienAVendre
+            -Client vendeur
+            +void RdvMandat(Bien bienAVendre, Client vendeur)
+            +Bien getBienAVendre()
+            +Client getVendeur()
+        }
+
+        class RdvVisite extends RDV{
+            -Bien bienVisite
+            -Client visiteur
+            +void RdvVisite(Bien bienVisite, Client visiteur)
+            +Bien getBienVitise()
+            +Client getVisiteur()
+        }
+
+        class RdvPromesseVente extends RDV{
+            -Bien bienPromis
+            -Client acheteur
+            +void RdvPromesseVente(Bien bienPromis, Client acheteur)
+            +Bien getBienPromis()
+            +Client getAcheteur()
+        }
+
+        class RdvRecherche extends RDV{
+            -Client acheteur
+            +void RdvRecherche( Client acheteur)
+            +Client getAcheteur()
+        }
+
+        class RdvConsult extends RDV{
+            -Client client
+            +Client getClient()
+            +void RdvConsult(Client client)
+
+        }
+    }
+
+    package modeleAutres <<Frame>> {
+	
+		enum TypePub{
+		  VIDEO
+		  AFFICHE
+		  RADIO
+		}
+        class Publicites{
+          -TypePub type
+          -String lien
+          +void Publicité(TypePub type, String lien)
+          +String getLien()
+          +void setLien(String link)
+        }
+		
+		enum EtatDossier{
+		  MANDAT
+		  RECHERCHE
+		  PROMESSEVENTE
+		  CLOS
+		}
+		class Dossier{
+			-EtatDossier etat
+			-Bien bienConserne
+			+void Dossier(Bien bienConserne)
+			+EtatDossier getEtat()
+			+void setEtat(EtatDossier etat)
+			+Bien getBienConserne()
+		}
+    }
+    
+    MyAgencyManager "1" <-- "*" Client
+    MyAgencyManager "1" <-- "*" Bien
+    MyAgencyManager "1" <-- "*" RDV
+    MyAgencyManager "1" <-- "*" Publicites
+    
+    RdvMandat  <--  Client
+    RdvVisite  <--  Client
+    RdvPromesseVente  <--  Client
+    RdvConsult  <--  Client
+	
+	Bien <-- Orientation
+	Dossier <-- EtatDossier
+	Publicites <-- TypePub
+}
+
+Client "1" *-- "*" Bien: Composition
+Client "1" *-- "*" RDV: Composition
+Client "1" *-- "*" Dossier: Composition
+
+package Vue <<Folder>> {
+}
+
+package Controleur <<Folder>> {
+}
+
+Vue -> Modele : READ
+Vue -> Controleur : WRITE
+Controleur -> Modele : MODIFY
+
+
+@enduml

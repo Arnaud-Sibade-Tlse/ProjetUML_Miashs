@@ -1,0 +1,63 @@
+@startuml
+
+title Diagramme Séquence de la gestion d'une Publicités
+
+actor Agent as A
+
+
+A -> vueAllPublicites 
+A //-- vueAllPublicites :afficher liste Publicites
+
+alt Créer Publicites
+vueAllPublicites -> vuePublicites :nouvellePublicites()
+
+
+A //-- vuePublicites :afficher Publicites vide
+
+A -> vuePublicites : saisie Information(s)
+A -> vuePublicites : valide
+
+vuePublicites -> ControleurPub : verifPub()
+
+ControleurPub -> ControleurPub : p = new Publicites(info)
+ControleurPub -> MyAgencyManager : listePub.add(p)
+
+MyAgencyManager -> vueAllPublicites : actualiserListe()
+
+A //-- vueAllPublicites : afficher nouvelle liste
+
+
+else Afficher Publicites
+vueAllPublicites -> vuePublicites : afficherPublicites(p)
+A //-- vuePublicites :afficher p
+
+else Modifier Publicites
+
+vueAllPublicites -> vuePublicites : modifierPublicites(p)
+A //-- vuePublicites :afficher p
+
+A -> vuePublicites : saisie Information(s)
+A -> vuePublicites : valide
+
+vuePublicites -> ControleurPub : verifPub()
+
+ControleurPub -> MyAgencyManager : listePub.get(p)
+MyAgencyManager -> ControleurPub : p
+
+loop attribute a in p
+ControleurPub -> ControleurPub :p.setA(info.a)
+end
+
+ControleurPub -> vuePublicites : afficherPublicites()
+A //-- vuePublicites :afficher p
+else Supprimer Publicites
+vueAllPublicites -> ControleurPub : supprimerPublicites(p)
+A //-- ControleurPub : Supprimer ?
+alt oui
+ControleurPub -> MyAgencyManager : listePub.remove(p)
+MyAgencyManager -> vueAllPublicites : actualiserListe()
+
+end
+A //-- vueAllPublicites : afficher nouvelle liste
+end
+@enduml
