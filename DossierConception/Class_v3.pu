@@ -6,7 +6,20 @@ package Modele <<Folder>> {
 
     package modeleAgence<<Frame>> {
         class MyAgencyManager {
+        -ArrayList<Client>
+        -ArrayList<Mandat>
+        -ArrayList<Publicites>
+        -ArrayList<RDV>
         }
+        
+    class Mandat{
+        -Bien maison
+        -Client vendeur
+        -Date butoir
+        -Client acheteur = null
+        -boolean sommeTotalVerse
+    }
+     MyAgencyManager"1" <- "*" Mandat
     }
     package modeleClient <<Frame>> {
         abstract Client {
@@ -39,18 +52,12 @@ package Modele <<Folder>> {
         class RdvMandat extends RDV{
         }
 
-        class RdvVisite extends RDV{
-        }
-
         class RdvPromesseVente extends RDV{
         }
 
         class RdvRecherche extends RDV{
         }
 
-        class RdvConsult extends RDV{
-
-        }
     }
 
     package modeleAutres <<Frame>> {
@@ -63,11 +70,12 @@ package Modele <<Folder>> {
     }
     
     MyAgencyManager "1" <-- "*" Client
-    MyAgencyManager "1" <-- "*" Bien
     MyAgencyManager "1" <-- "*" RDV
     MyAgencyManager "1" <-- "*" Publicites
 
-    Client "1" <- "*" Bien
+    
+    Mandat o- Client
+    Mandat o- Bien
     
 	Bien <-- Orientation
 	Publicites <-- TypePub
