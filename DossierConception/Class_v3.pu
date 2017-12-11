@@ -42,7 +42,7 @@ package Modele <<Folder>> {
         }
         class Appartement extends Bien{
         }
-        Terrain  *-- "0.*" Maison
+        Terrain  o-- "0.*" Maison
     }
 
     package modeleRDV <<Frame>> {
