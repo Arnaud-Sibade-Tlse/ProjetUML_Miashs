@@ -11,23 +11,16 @@ rectangle MyAgencyManager{
   (Gérer Biens) as GB
   (Gérer Pubs) as GP
   (Faire Stats) as S
-  
-  (Vendre Bien) as VB
-  (Acter Vente) as AB
-  
   (Chercher Bien) as CB
-
 }
 
 left to right direction
 A --> GC
-  GC <.. VB : <<include>>
-  GC <.. CB : <<include>>
-A --> AB
 A --> GB
 A --> GR
 A --> GP
 A --> S
+A --> CB
 
 @enduml
 
