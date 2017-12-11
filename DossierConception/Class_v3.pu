@@ -1,0 +1,88 @@
+@startuml
+
+title Diagramme des Classes
+
+package Modele <<Folder>> {
+
+    package modeleAgence<<Frame>> {
+        class MyAgencyManager {
+        }
+    }
+    package modeleClient <<Frame>> {
+        abstract Client {
+        }
+        class ClientPhysique extends Client{
+        }
+    
+        class ClientMoral extends Client{
+        }
+    }
+
+    package modeleBien <<Frame>> {
+        enum Orientation{
+         }
+        abstract Bien {
+        }
+        class Terrain extends Bien{
+        }
+        class Maison extends Bien{
+        }
+        class Appartement extends Bien{
+        }
+        Terrain  *-- "0.*" Maison
+    }
+
+    package modeleRDV <<Frame>> {
+        abstract RDV{
+        }
+
+        class RdvMandat extends RDV{
+        }
+
+        class RdvVisite extends RDV{
+        }
+
+        class RdvPromesseVente extends RDV{
+        }
+
+        class RdvRecherche extends RDV{
+        }
+
+        class RdvConsult extends RDV{
+
+        }
+    }
+
+    package modeleAutres <<Frame>> {
+	
+		enum TypePub{
+		}
+        class Publicites{
+        }
+		
+    }
+    
+    MyAgencyManager "1" <-- "*" Client
+    MyAgencyManager "1" <-- "*" Bien
+    MyAgencyManager "1" <-- "*" RDV
+    MyAgencyManager "1" <-- "*" Publicites
+
+    Client "1" <- "*" Bien
+    
+	Bien <-- Orientation
+	Publicites <-- TypePub
+}
+
+
+package Vue <<Folder>> {
+}
+
+package Controleur <<Folder>> {
+}
+
+Vue -> Modele : READ
+Vue -> Controleur : WRITE
+Controleur -> Modele : MODIFY
+
+
+@enduml
