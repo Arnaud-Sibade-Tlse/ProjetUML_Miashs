@@ -1,63 +1,63 @@
 @startuml
 
-title Diagramme Séquence de la gestion d'une Publicités
+title Diagramme Séquence de la gestion d'un RDV
 
 actor Agent as A
 
 
-A -> vueAllPublicites 
-A //-- vueAllPublicites :afficher liste Publicites
+A -> vueAllRdvs 
+A //-- vueAllRdvs :afficher liste RDV
 
-alt Créer Publicites
-vueAllPublicites -> vuePublicites :nouvellePublicites()
-
-
-A //-- vuePublicites :afficher Publicites vide
-
-A -> vuePublicites : saisie Information(s)
-A -> vuePublicites : valide
-
-vuePublicites -> ControleurPub : verifPub()
-
-ControleurPub -> ControleurPub : p = new Publicites(info)
-ControleurPub -> MyAgencyManager : listePub.add(p)
-
-MyAgencyManager -> vueAllPublicites : actualiserListe()
-
-A //-- vueAllPublicites : afficher nouvelle liste
+alt Créer RDV
+vueAllRdvs -> vueRDVs :nouveauRDV()
 
 
-else Afficher Publicites
-vueAllPublicites -> vuePublicites : afficherPublicites(p)
-A //-- vuePublicites :afficher p
+A //-- vueRDVs :afficher RDV vide
 
-else Modifier Publicites
+A -> vueRDVs : saisie Information(s)
+A -> vueRDVs : valide
 
-vueAllPublicites -> vuePublicites : modifierPublicites(p)
-A //-- vuePublicites :afficher p
+vueRDVs -> ControleurRDV : verifRDV()
 
-A -> vuePublicites : saisie Information(s)
-A -> vuePublicites : valide
+ControleurRDV -> ControleurRDV : p = new RDV(info)
+ControleurRDV -> MyAgencyManager : listeRDV.add(p)
 
-vuePublicites -> ControleurPub : verifPub()
+MyAgencyManager -> vueAllRdvs : actualiserListe()
 
-ControleurPub -> MyAgencyManager : listePub.get(p)
-MyAgencyManager -> ControleurPub : p
+A //-- vueAllRdvs : afficher nouvelle liste
+
+
+else Afficher RDV
+vueAllRdvs -> vueRDVs : afficherRDVs(p)
+A //-- vueRDVs :afficher p
+
+else Modifier RDV
+
+vueAllRdvs -> vueRDVs : modifierRDVs(p)
+A //-- vueRDVs :afficher p
+
+A -> vueRDVs : saisie Information(s)
+A -> vueRDVs : valide
+
+vueRDVs -> ControleurRDV : verifPub()
+
+ControleurRDV -> MyAgencyManager : listeRDV.get(p)
+MyAgencyManager -> ControleurRDV : p
 
 loop attribute a in p
-ControleurPub -> ControleurPub :p.setA(info.a)
+ControleurRDV -> ControleurRDV :p.setA(info.a)
 end
 
-ControleurPub -> vuePublicites : afficherPublicites()
-A //-- vuePublicites :afficher p
-else Supprimer Publicites
-vueAllPublicites -> ControleurPub : supprimerPublicites(p)
-A //-- ControleurPub : Supprimer ?
+ControleurRDV -> vueRDVs : afficherRDVs()
+A //-- vueRDVs :afficher p
+else Supprimer RDV
+vueAllRdvs -> ControleurRDV : supprimerRDVs(p)
+A //-- ControleurRDV : Supprimer ?
 alt oui
-ControleurPub -> MyAgencyManager : listePub.remove(p)
-MyAgencyManager -> vueAllPublicites : actualiserListe()
+ControleurRDV -> MyAgencyManager : listeRDV.remove(p)
+MyAgencyManager -> vueAllRdvs : actualiserListe()
 
 end
-A //-- vueAllPublicites : afficher nouvelle liste
+A //-- vueAllRdvs : afficher nouvelle liste
 end
 @enduml
