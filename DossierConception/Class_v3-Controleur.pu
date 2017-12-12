@@ -1,0 +1,54 @@
+@startuml
+
+title Diagramme des Classes vue Controleur
+
+package Modele <<Folder>> {
+}
+
+
+package Vue <<Folder>> {
+}
+
+package Controleur <<Folder>> {
+    
+     package controleurClient <<Frame>> {
+        class controleurClient {
+            +void verifClient()
+            +void afficherClient()
+        }
+    }
+    
+    package controleurAutres <<Frame>> {
+	
+        class controleurMandat{
+            +void verifMandat()
+            +void afficherMandat()
+        }
+        class ControleurPublicites{
+            +void verifPublicites()
+            +void afficherPublicites()
+        }
+    }
+    
+    package controleurBien <<Frame>> {
+        class controleurBien {
+            +void verifBien()
+            +void afficherBien()
+            
+        }
+    }
+    
+    package controleurRDV <<Frame>> {
+        class controleurRDV {
+            +void verifRDV()
+            +void afficherRDV()
+            
+        }
+    }
+}
+
+Vue --> Modele : READ
+Vue -> Controleur : WRITE
+Controleur -> Modele : MODIFY
+
+@enduml

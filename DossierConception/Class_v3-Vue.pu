@@ -1,0 +1,129 @@
+@startuml
+
+title Diagramme des Classes vue Vue
+
+package Modele <<Folder>> {
+
+    package modeleAgence<<Frame>> {
+        class MyAgencyManager {
+        -ArrayList<Client> listeClients
+        -ArrayList<Mandat> listeMandats
+        -ArrayList<Publicites> listePublicites
+        -ArrayList<RDV> listeRdvs
+        }
+    }
+    package modeleClient <<Frame>> {
+        abstract Client {
+        -String nom
+          -String adresse
+          -String numTel
+          -String mail
+          +void Client(String nom,String adresse,String numTel,String mail)
+
+        }
+        class ClientPhysique extends Client{
+            +void ClientPhysique(String nom,String adresse,String numTel,String mail)
+        }
+    
+        class ClientMoral extends Client{
+            -String formeJuridique
+            -String nSIREN
+            +void ClientMoral(String juridic, String siren)
+        }
+    }
+
+    package modeleBien <<Frame>> {
+        enum Orientation{
+            NORD
+            SUD
+            EST
+            OUEST
+         }
+        abstract Bien {
+            -int id
+            -String adresse
+            -Orientation orient
+            +void Bien(String adresse, Orientation orient) 
+        }
+        class Terrain extends Bien{
+        -double surfaceTotal
+            -double longueurFacade
+            +void Terrain(String adresse, Orientation orient,double surfaceTotal, double lgrFacade)
+        }
+        class Maison extends Bien{
+            -Terrain terrain
+            -double surfaceHabitable
+            -int nbPiece
+            -int nbEtage
+            -String moyenChauff
+            +void Maison(String adresse, Orientation orient,double surfaceHabit, int piece, int etage, String chauff,Terrain terrain)
+        }
+        class Appartement extends Bien{
+        -int nbPiece
+            -int etage
+            -double chargesMensuelles
+            +void Appartement(String adresse, Orientation orient,int piece, int etage, double charges)
+        }
+        Terrain  o-- "0.*" Maison
+    }
+
+    package modeleRDV <<Frame>> {
+        abstract RDV{
+        }
+
+        class RdvMandat extends RDV{
+        }
+
+        class RdvPromesseVente extends RDV{
+        }
+
+        class RdvRecherche extends RDV{
+        }
+
+    }
+
+    package modeleAutres <<Frame>> {
+	
+		enum TypePub{
+		}
+        class Publicites{
+        }
+        
+        class Mandat{
+            -Bien maison
+            -Client vendeur
+            -Date butoir
+            -Client acheteur = null
+            -boolean sommeTotalVerse
+        }
+		
+    }
+}
+
+
+package Vue <<Folder>> {
+}
+
+package Controleur <<Folder>> {
+}
+
+Vue ------> Modele : READ
+Vue --> Controleur : WRITE
+Controleur ----> Modele : MODIFY
+
+MyAgencyManager"1" <-- "*" Mandat : listeMandats
+MyAgencyManager "1" <------ "*" Client :listeClients
+MyAgencyManager "1" <--- "*" RDV : listeRdvs
+MyAgencyManager "1" <-- "*" Publicites : listePublicites
+
+left to right direction
+
+Mandat "1" o-- "1" Client : vendeur
+Mandat "1" o-- "0.1" Client : acheteur
+    
+Mandat "1" o-- "1" Bien : Maison
+    
+Bien <- Orientation : orient
+Publicites <-- TypePub : typPub
+
+@enduml

@@ -1,6 +1,6 @@
 @startuml
 
-title Diagramme des Classes
+title Diagramme des Classes vue Modele
 
 package Modele <<Folder>> {
 
@@ -14,10 +14,11 @@ package Modele <<Folder>> {
     }
     package modeleClient <<Frame>> {
         abstract Client {
-        -String nom
+            -String nom
           -String adresse
           -String numTel
           -String mail
+          -Recherche souhait
           +void Client(String nom,String adresse,String numTel,String mail)
 
         }
@@ -29,6 +30,18 @@ package Modele <<Folder>> {
             -String formeJuridique
             -String nSIREN
             +void ClientMoral(String juridic, String siren)
+        }
+        
+        class Recherche{
+            -Orientation orient
+            -double surfaceTotale
+            -double longueurFacade
+            -double surfaceHabitable
+            -int nbEtage
+            -String moyenChauff
+            -int nbPiece
+            -int etage
+            -double chargesMensuelles
         }
     }
 
@@ -46,7 +59,7 @@ package Modele <<Folder>> {
             +void Bien(String adresse, Orientation orient) 
         }
         class Terrain extends Bien{
-        -double surfaceTotal
+            -double surfaceTotale
             -double longueurFacade
             +void Terrain(String adresse, Orientation orient,double surfaceTotal, double lgrFacade)
         }
@@ -59,36 +72,36 @@ package Modele <<Folder>> {
             +void Maison(String adresse, Orientation orient,double surfaceHabit, int piece, int etage, String chauff,Terrain terrain)
         }
         class Appartement extends Bien{
-        -int nbPiece
+            -int nbPiece
             -int etage
             -double chargesMensuelles
             +void Appartement(String adresse, Orientation orient,int piece, int etage, double charges)
         }
-        Terrain  o-- "0.*" Maison
+        Terrain  o- "0.*" Maison
     }
 
     package modeleRDV <<Frame>> {
         abstract RDV{
+            -Client client
+            +void RDV(Client c)
         }
 
         class RdvMandat extends RDV{
+            +Mandat creerMandat()
         }
 
         class RdvPromesseVente extends RDV{
+            +void setAcheteur(Client c)
         }
 
         class RdvRecherche extends RDV{
+            +ArrayList<Biens> rechercher(Client c)
         }
 
     }
 
     package modeleAutres <<Frame>> {
 	
-		enum TypePub{
-		}
-        class Publicites{
-        }
-        
         class Mandat{
             -Bien maison
             -Client vendeur
@@ -96,6 +109,19 @@ package Modele <<Folder>> {
             -Client acheteur = null
             -boolean sommeTotalVerse
         }
+		enum TypePub{
+		    HTML
+		    VIDEO
+		    IMAGE
+		    TEXTE
+		}
+        class Publicites{
+            -TypePub typPub
+            -Bien bienConserne
+            -String lien
+            +void Publicites(TypePub type, Bien bienC, String link)
+        }
+        
 		
     }
 }
@@ -107,23 +133,25 @@ package Vue <<Folder>> {
 package Controleur <<Folder>> {
 }
 
-Vue ------> Modele : READ
-Vue --> Controleur : WRITE
-Controleur ----> Modele : MODIFY
+Vue --> Modele : READ
+Vue -> Controleur : WRITE
+Controleur -> Modele : MODIFY
 
 MyAgencyManager"1" <-- "*" Mandat : listeMandats
-MyAgencyManager "1" <------ "*" Client :listeClients
-MyAgencyManager "1" <--- "*" RDV : listeRdvs
+MyAgencyManager "1" <--- "*" Client :listeClients
+MyAgencyManager "1" <-- "*" RDV : listeRdvs
 MyAgencyManager "1" <-- "*" Publicites : listePublicites
 
 left to right direction
 
-Mandat "1" o-- "1" Client : vendeur
-Mandat "1" o-- "0.1" Client : acheteur
+Client "1" o- "1" Recherche : souhait
+
+Mandat "1" o- "1" Client : vendeur
+Mandat "1" o- "0.1" Client : acheteur
     
-Mandat "1" o-- "1" Bien : Maison
+Mandat "1" o- "1" Bien : Maison
     
 Bien <- Orientation : orient
-Publicites <-- TypePub : typPub
+Publicites <- TypePub : typPub
 
 @enduml
