@@ -5,7 +5,7 @@ public abstract class Bien {
 	private String Adresse;
 	private Orientation oriente;
 	
-	private Bien(int id, String Addresse, Orientation o){
+	protected Bien(int id, String Addresse, Orientation o){
 		this.Adresse = Addresse;
 		this.id=id;
 		this.oriente = o;
