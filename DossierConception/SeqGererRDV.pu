@@ -1,19 +1,63 @@
 @startuml
 
-title Diagramme Séquence de la création d'un Client
+title Diagramme Séquence de la gestion d'un RDV
 
-actor User as U
-U -> MyAgencyManager :CréerClient()
+actor Agent as A
 
-MyAgencyManager -> Client :new Client() c
 
-MyAgencyManager -> vueClient : vueClient(c)
+A -> vueAllRdvs 
+A //-- vueAllRdvs :afficher liste RDV
 
-U //-- vueClient :afficher Client
+alt Créer RDV
+vueAllRdvs -> vueRDVs :nouveauRDV()
 
-U -> vueClient :Saisit Information(s)
-U -> vueClient :Valide saisie
 
-vueClient -> ControleurClient :Verifie Information(s)
-ControleurClient -> Client :Modifie Information(s)
+A //-- vueRDVs :afficher RDV vide
+
+A -> vueRDVs : saisie Information(s)
+A -> vueRDVs : valide
+
+vueRDVs -> ControleurRDV : verifRDV()
+
+ControleurRDV -> ControleurRDV : r = new RDV(info)
+ControleurRDV -> MyAgencyManager : listeRDVs.add(r)
+
+MyAgencyManager -> vueAllRdvs : actualiserListe()
+
+A //-- vueAllRdvs : afficher nouvelle liste
+
+
+else Afficher RDV
+vueAllRdvs -> vueRDVs : afficherRDVs(r)
+A //-- vueRDVs :afficher r
+
+else Modifier RDV
+
+vueAllRdvs -> vueRDVs : modifierRDVs(r)
+A //-- vueRDVs :afficher r
+
+A -> vueRDVs : saisie Information(s)
+A -> vueRDVs : valide
+
+vueRDVs -> ControleurRDV : verifPub()
+
+ControleurRDV -> MyAgencyManager : listeRDVs.get(r)
+MyAgencyManager -> ControleurRDV : r
+
+loop attribute a in r
+ControleurRDV -> ControleurRDV :r.setA(info.a)
+end
+
+ControleurRDV -> vueRDVs : afficherRDVs()
+A //-- vueRDVs :afficher r
+else Supprimer RDV
+vueAllRdvs -> ControleurRDV : supprimerRDVs(r)
+A //-- ControleurRDV : Supprimer ?
+alt oui
+ControleurRDV -> MyAgencyManager : listeRDVs.remove(r)
+MyAgencyManager -> vueAllRdvs : actualiserListe()
+
+end
+A //-- vueAllRdvs : afficher nouvelle liste
+end
 @enduml

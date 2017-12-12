@@ -2,12 +2,12 @@
 
 title Diagramme Séquence de l'affichage des Statistiques
 
-actor User as U
-U -> MyAgencyManager : AfficherStat()
-U -> vueStat :SelectionnerObjetStat(Object o)
-vueStat -> ControleurStat : verifieObject(o)
-ControleurStat -> ControleurObject :renvoieLeControleurObjet
-ControleurObject -> ControleurObject: calculStatObjet()
+actor Agent as A
 
-ControleurObject -> vueStat: renvoieStatObjet()
+A -> MyAgencyManager
+
+MyAgencyManager -> vueStat : getStat(MyAgencyManager)
+
+A //-- vueStat : statistiques calcullées
+
 @enduml
