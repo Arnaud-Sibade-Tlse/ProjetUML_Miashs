@@ -6,20 +6,11 @@ package Modele <<Folder>> {
 
     package modeleAgence<<Frame>> {
         class MyAgencyManager {
-        -ArrayList<Client>
-        -ArrayList<Mandat>
-        -ArrayList<Publicites>
-        -ArrayList<RDV>
+        -ArrayList<Client> listeClients
+        -ArrayList<Mandat> listeMandats
+        -ArrayList<Publicites> listePublicites
+        -ArrayList<RDV> listeRdvs
         }
-        
-    class Mandat{
-        -Bien maison
-        -Client vendeur
-        -Date butoir
-        -Client acheteur = null
-        -boolean sommeTotalVerse
-    }
-     MyAgencyManager"1" <- "*" Mandat
     }
     package modeleClient <<Frame>> {
         abstract Client {
@@ -31,6 +22,7 @@ package Modele <<Folder>> {
 
         }
         class ClientPhysique extends Client{
+            +void ClientPhysique(String nom,String adresse,String numTel,String mail)
         }
     
         class ClientMoral extends Client{
@@ -96,19 +88,16 @@ package Modele <<Folder>> {
 		}
         class Publicites{
         }
+        
+        class Mandat{
+            -Bien maison
+            -Client vendeur
+            -Date butoir
+            -Client acheteur = null
+            -boolean sommeTotalVerse
+        }
 		
     }
-    
-    MyAgencyManager "1" <-- "*" Client
-    MyAgencyManager "1" <-- "*" RDV
-    MyAgencyManager "1" <-- "*" Publicites
-
-    
-    Mandat o- Client
-    Mandat o- Bien
-    
-	Bien <-- Orientation
-	Publicites <-- TypePub
 }
 
 
@@ -118,9 +107,23 @@ package Vue <<Folder>> {
 package Controleur <<Folder>> {
 }
 
-Vue -> Modele : READ
-Vue -> Controleur : WRITE
-Controleur -> Modele : MODIFY
+Vue ------> Modele : READ
+Vue --> Controleur : WRITE
+Controleur ----> Modele : MODIFY
 
+MyAgencyManager"1" <-- "*" Mandat : listeMandats
+MyAgencyManager "1" <------ "*" Client :listeClients
+MyAgencyManager "1" <--- "*" RDV : listeRdvs
+MyAgencyManager "1" <-- "*" Publicites : listePublicites
+
+left to right direction
+
+Mandat "1" o-- "1" Client : vendeur
+Mandat "1" o-- "0.1" Client : acheteur
+    
+Mandat "1" o-- "1" Bien : Maison
+    
+Bien <- Orientation : orient
+Publicites <-- TypePub : typPub
 
 @enduml
