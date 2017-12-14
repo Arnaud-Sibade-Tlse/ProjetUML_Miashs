@@ -3,12 +3,12 @@ package modele.bien;
 public abstract class Bien {
 	private int id;
 	private String Adresse;
-	private Orientation oriente;
+	private Orientation orient;
 	
 	protected Bien(int id, String Addresse, Orientation o){
 		this.Adresse = Addresse;
 		this.id=id;
-		this.oriente = o;
+		this.orient = o;
 	}
 	
 	public int getId() {
@@ -24,10 +24,10 @@ public abstract class Bien {
 		Adresse = adresse;
 	}
 	public Orientation getOriente() {
-		return oriente;
+		return orient;
 	}
-	public void setOriente(Orientation oriente) {
-		this.oriente = oriente;
+	public void setOriente(Orientation orient) {
+		this.orient = orient;
 	}
 	
 }
