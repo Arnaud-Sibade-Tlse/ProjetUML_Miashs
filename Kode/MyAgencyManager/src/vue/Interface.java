@@ -4,6 +4,8 @@ public class Interface {
 
 	public static GroupeCommande accueil = new GroupeCommande();
 	
+	//http://baptiste-wicht.developpez.com/tutoriels/java/outils/executables/#LIII-B
+	
 	public static void main(String[] args) {
 		
 		/*
