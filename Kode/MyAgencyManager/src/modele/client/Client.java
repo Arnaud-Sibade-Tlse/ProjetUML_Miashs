@@ -7,6 +7,9 @@ public abstract class Client {
 	private String mail;
 	public Client(String nom, String adrs, String num, String mail){
 		this.nom = nom;
+		this.adresse = adrs;
+		this.numTel = num;
+		this.mail = mail;
 		
 	}
 	public String getNom(){

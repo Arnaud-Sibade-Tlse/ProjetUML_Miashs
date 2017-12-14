@@ -4,11 +4,13 @@ public abstract class Bien {
 	private int id;
 	private String Adresse;
 	private Orientation orient;
+	private long prix;
 	
-	protected Bien(int id, String Addresse, Orientation o){
+	protected Bien(int id, String Addresse, Orientation o, long prix){
 		this.Adresse = Addresse;
 		this.id=id;
 		this.orient = o;
+		this.setPrix(prix);
 	}
 	
 	public int getId() {
@@ -28,6 +30,14 @@ public abstract class Bien {
 	}
 	public void setOriente(Orientation orient) {
 		this.orient = orient;
+	}
+
+	public long getPrix() {
+		return prix;
+	}
+
+	public void setPrix(long prix) {
+		this.prix = prix;
 	}
 	
 }
