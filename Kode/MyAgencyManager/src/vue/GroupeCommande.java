@@ -21,6 +21,7 @@ public class GroupeCommande {
 		for (int i = 0; i < sousCommande.size(); i++) {
 			System.out.println("{" + (i + 1) + "} " + sousCommande.get(i).getCommande());
 		}
+		System.out.println("{" + (sousCommande.size() + 1) + "} Menu Principal");
 		System.out.println("\n:");
 		int saisie = 0;
 		do{
@@ -29,9 +30,14 @@ public class GroupeCommande {
 			}catch(Exception e){
 				saisie = 0;
 			}
-		}while(saisie == 0 ||saisie > sousCommande.size());
+		}while(saisie == 0 ||saisie > sousCommande.size() + 1 );
 		
-		sousCommande.get(saisie-1).execute();
+		if(saisie == sousCommande.size() + 1){
+			Interface.accueil.exec();
+		}
+		else{
+			sousCommande.get(saisie-1).execute();
+		}
 	}
 
 }
