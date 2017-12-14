@@ -1,8 +1,8 @@
 package modele.bien;
 
 public enum Orientation {
-	NORD;
-	SUD;
-	EST;
+	NORD,
+	SUD,
+	EST,
 	OUEST;
 }
