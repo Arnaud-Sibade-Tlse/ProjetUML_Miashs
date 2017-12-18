@@ -30,7 +30,7 @@ public class GroupeCommande {
 			}catch(Exception e){
 				saisie = 0;
 			}
-		}while(saisie == 0 ||saisie > sousCommande.size() + 1 );
+		}while(saisie <= 0 ||saisie > sousCommande.size() + 1 );
 		
 		if(saisie == sousCommande.size() + 1){
 			Interface.accueil.exec();
