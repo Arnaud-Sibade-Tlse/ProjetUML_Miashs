@@ -2,6 +2,7 @@ package modele.RDV;
 
 import java.util.Date;
 
+import modele.autres.Mandat;
 import modele.client.Client;
 
 public class RdvPromesseVente extends RDV {

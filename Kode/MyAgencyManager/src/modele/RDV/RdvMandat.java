@@ -2,6 +2,7 @@ package modele.RDV;
 
 import java.util.Date;
 
+import modele.autres.Mandat;
 import modele.client.Client;
 
 public class RdvMandat extends RDV{
@@ -10,6 +11,7 @@ public class RdvMandat extends RDV{
 	}
 	
 	public Mandat creerMandat(){
+		return null;
 		//TODO
 	}
 }
