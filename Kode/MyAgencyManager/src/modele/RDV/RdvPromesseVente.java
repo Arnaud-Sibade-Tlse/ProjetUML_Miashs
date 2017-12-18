@@ -25,4 +25,11 @@ public class RdvPromesseVente extends RDV {
 	public void setAcheteurPotentiel(Client acheteurPotentiel) {
 		this.acheteurPotentiel = acheteurPotentiel;
 	}
+	
+	public String toString(){
+		return "RDV Promesse de Vente \n ID Vendeur : " + this.getClient().getNom() +
+				"\nDate RDV : " + this.getDateRDV().toString() +
+				"\nID Acheteur : " + this.getAcheteurPotentiel().getNom() +
+				"\nID Bien Concernee : " + this.mandat.getPropriete().getId();
+	}
 }

@@ -22,7 +22,8 @@ public class GroupeCommande {
 			System.out.println("{" + (i + 1) + "} " + sousCommande.get(i).getCommande());
 		}
 		System.out.println("{" + (sousCommande.size() + 1) + "} Menu Principal");
-		System.out.println("\n:");
+		System.out.print("\n:");
+		
 		int saisie = 0;
 		do{
 			try{

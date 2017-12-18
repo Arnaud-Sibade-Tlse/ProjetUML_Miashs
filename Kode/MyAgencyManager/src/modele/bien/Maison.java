@@ -55,5 +55,16 @@ public class Maison extends Bien {
 	public void setMoyenChauff(String moyenChauff) {
 		this.moyenChauff = moyenChauff;
 	}
-
+	
+	public String toString(){
+		return "ID Bien (Maison) : " + this.getId() + 
+				"\nAdresse : " + this.getAdresse() +
+				"\nOrientation : " + this.getOriente()+
+				"\nPrix : " + this.getPrix() + "€" +
+				"\nEtage(s) : " + this.getNbEtage() +
+				"\nNombre de Pièce : " + this.getNbPiece() +
+				"\nSurface: " + this.getSurfaceHabitable() +
+				"\nMoyen de chauffage: " + this.getMoyenChauff() +
+				"\nID Terrain : " + this.getTerrain().getId();	
+	}
 }

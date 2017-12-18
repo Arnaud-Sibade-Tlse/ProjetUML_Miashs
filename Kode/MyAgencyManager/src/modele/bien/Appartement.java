@@ -45,5 +45,15 @@ public class Appartement extends Bien {
 	public void setSurface(double surface) {
 		this.surface = surface;
 	}
-
+	
+	public String toString(){
+		return "ID Bien (Appartement) : " + this.getId() + 
+				"\nAdresse : " + this.getAdresse() +
+				"\nOrientation : " + this.getOriente()+
+				"\nPrix : " + this.getPrix() + "€" +
+				"\nEtage : " + this.getEtage() +
+				"\nNombre de Pièce : " + this.getNbPiece() +
+				"\nSurface: " + this.getSurface() +
+				"\nCharges mensuelles : " + this.getChargeMensuelles() + "€";	
+	}
 }

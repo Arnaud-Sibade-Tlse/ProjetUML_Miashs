@@ -20,5 +20,11 @@ public class RdvFinalisation extends RDV{
 	public void setMandat(Mandat mandat) {
 		this.mandat = mandat;
 	}
-
+	
+	public String toString(){
+		return "RDV Finalisation de Vente \n ID Vendeur : " + this.getClient().getNom() +
+				"\nDate RDV : " + this.getDateRDV().toString() +
+				"\nID Acheteur : " + this.mandat.getAcheteur().getNom() +
+				"\nID Bien Concernee : " + this.mandat.getPropriete().getId();
+	}
 }

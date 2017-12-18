@@ -16,4 +16,9 @@ public class RdvRecherche extends RDV {
 		//TODO
 		return null;
 	}
+	
+	public String toString(){
+		return "RDV Recherche \n ID Client : " + this.getClient().getNom() +
+				"\nDate RDV : " + this.getDateRDV().toString();
+	}
 }

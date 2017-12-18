@@ -36,4 +36,9 @@ public class Publicites {
 	public void setLien(String lien) {
 		this.lien = lien;
 	}
+	
+	public String toString(){
+		return "Bien : " + this.getBienConcerner().getId() +
+				"\nLien : " + this.getLien() ;
+	}
 }

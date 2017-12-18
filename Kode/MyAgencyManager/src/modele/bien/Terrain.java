@@ -25,5 +25,12 @@ public class Terrain extends Bien{
 	public void setLongueurFacade(double longueurFacade) {
 		this.longueurFacade = longueurFacade;
 	}
-
+	public String toString(){
+		return "ID Bien (Maison) : " + this.getId() + 
+				"\nAdresse : " + this.getAdresse() +
+				"\nOrientation : " + this.getOriente()+
+				"\nPrix : " + this.getPrix() + "€" +
+				"\nLongueur Facade : " + this.getLongueurFacade() +
+				"\nSurface Totale : " + this.getSurfaceTotale();
+	}
 }

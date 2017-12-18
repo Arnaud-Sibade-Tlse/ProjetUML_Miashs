@@ -11,8 +11,8 @@ public class Mandat {
 	private Date dateButoir;
 	private Client acheteur;
 	private boolean sommeTotalVerse;
-	
-	public Mandat(Bien b, Client vendeur, Date dB){
+
+	public Mandat(Bien b, Client vendeur, Date dB) {
 		this.setAcheteur(null);
 		this.setSommeTotalVerse(false);
 		this.setPropriete(b);
@@ -58,5 +58,18 @@ public class Mandat {
 
 	public void setSommeTotalVerse(boolean sommeTotalVerse) {
 		this.sommeTotalVerse = sommeTotalVerse;
+	}
+	
+	public String getTotalVersee(){
+		if(sommeTotalVerse){return "OUI";}
+		else{return "NON";}
+	}
+	
+	public String toString() {
+		return "Bien : " + this.getPropriete().getId() + 
+				"\nPropietaire : " + this.getVendeur().getNom() + 
+				"\nDate fin Mandat : " + this.getDateButoir().toString() +
+				"\nAcheteur potentiel : "+ this.getAcheteur().getNom()
+				+"\nSomme totale versee : " +this.getTotalVersee();
 	}
 }

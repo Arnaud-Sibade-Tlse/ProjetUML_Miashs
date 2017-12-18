@@ -25,8 +25,8 @@ public class CommandeVoirs extends Commande {
 				for (int i = 0; i < MyAgencyManager.getListeClients().size(); i++) {
 					System.out.println("	[" + (i + 1) + "] " + MyAgencyManager.getListeClients().get(i).getNom());
 				}
-				System.out.println("{" + (MyAgencyManager.getListeClients().size() + 1) + "} Retour Menu Principal\n:");
-				System.out.println();
+				System.out.println("{" + (MyAgencyManager.getListeClients().size() + 1) + "} Retour Menu Principal");
+				System.out.print("\n:");
 				
 				
 				int idClient = 0;
@@ -45,7 +45,8 @@ public class CommandeVoirs extends Commande {
 				System.out.println("o= Que faire sur ce Client ? =o");
 				System.out.println("{1} Voir");
 				System.out.println("{2} Modifier");
-				System.out.println("{3} Annuler\n:");
+				System.out.println("{3} Annuler");
+				System.out.print("\n:");
 				
 				int operationC = 0;
 				do{
@@ -56,8 +57,19 @@ public class CommandeVoirs extends Commande {
 					}
 				}while(operationC <= 0 ||operationC >= 4 );
 				
-				System.out.println("Operation "+operationC+" sur Client "+idClient);
-				
+				switch(operationC){
+					case 1:
+						System.out.println("\n" + MyAgencyManager.getListeClients().get(idClient-1).toString());
+						System.out.println("____\n");
+						this.execute();
+						break;
+					case 2:
+						this.execute();
+						break;
+					case 3:
+						this.execute();
+						break;
+				}
 				break;
 				
 		//Bien
@@ -67,8 +79,8 @@ public class CommandeVoirs extends Commande {
 				for (int i = 0; i < MyAgencyManager.getListeBiens().size(); i++) {
 					System.out.println("	[" + (i + 1) + "] " + MyAgencyManager.getListeBiens().get(i));
 				}
-				System.out.println("{" + (MyAgencyManager.getListeBiens().size() + 1) + "} Retour Menu Principal\n:");
-				System.out.println();
+				System.out.println("{" + (MyAgencyManager.getListeBiens().size() + 1) + "} Retour Menu Principal");
+				System.out.print("\n:");
 				
 				
 				int idBien = 0;
@@ -87,7 +99,8 @@ public class CommandeVoirs extends Commande {
 				System.out.println("o= Que faire sur ce Bien ? =o");
 				System.out.println("{1} Voir");
 				System.out.println("{2} Modifier");
-				System.out.println("{3} Annuler\n:");
+				System.out.println("{3} Annuler");
+				System.out.print("\n:");
 				
 				int operationB = 0;
 				do{
@@ -98,8 +111,19 @@ public class CommandeVoirs extends Commande {
 					}
 				}while(operationB <= 0 ||operationB >= 4 );
 				
-				System.out.println("Operation "+operationB+" sur Bien "+idBien);
-				
+				switch(operationB){
+					case 1:
+						System.out.println("\n" + MyAgencyManager.getListeBiens().get(idBien-1).toString());
+						System.out.println("____\n");
+						this.execute();
+						break;
+					case 2:
+						this.execute();
+						break;
+					case 3:
+						this.execute();
+						break;
+				}
 				break;
 				
 		//RDV
@@ -109,8 +133,8 @@ public class CommandeVoirs extends Commande {
 				for (int i = 0; i < MyAgencyManager.getListeRDVs().size(); i++) {
 					System.out.println("	[" + (i + 1) + "] " + MyAgencyManager.getListeRDVs().get(i));
 				}
-				System.out.println("{" + (MyAgencyManager.getListeRDVs().size() + 1) + "} Retour Menu Principal\n:");
-				System.out.println();
+				System.out.println("{" + (MyAgencyManager.getListeRDVs().size() + 1) + "} Retour Menu Principal");
+				System.out.print("\n:");
 				
 				
 				int idRDV = 0;
@@ -129,7 +153,8 @@ public class CommandeVoirs extends Commande {
 				System.out.println("o= Que faire sur ce RDV ? =o");
 				System.out.println("{1} Voir");
 				System.out.println("{2} Modifier");
-				System.out.println("{3} Annuler\n:");
+				System.out.println("{3} Annuler");
+				System.out.print("\n:");
 				
 				int operationRDV = 0;
 				do{
@@ -140,8 +165,19 @@ public class CommandeVoirs extends Commande {
 					}
 				}while(operationRDV <= 0 ||operationRDV >= 4 );
 				
-				System.out.println("Operation "+operationRDV+" sur Client "+idRDV);
-				
+				switch(operationRDV){
+					case 1:
+						System.out.println("\n" + MyAgencyManager.getListeRDVs().get(idRDV-1).toString());
+						System.out.println("____\n");
+						this.execute();
+						break;
+					case 2:
+						this.execute();
+						break;
+					case 3:
+						this.execute();
+						break;
+				}
 				break;
 				
 		//Mandat
@@ -151,8 +187,8 @@ public class CommandeVoirs extends Commande {
 				for (int i = 0; i < MyAgencyManager.getListeMandats().size(); i++) {
 					System.out.println("	[" + (i + 1) + "] " + MyAgencyManager.getListeMandats().get(i));
 				}
-				System.out.println("{" + (MyAgencyManager.getListeMandats().size() + 1) + "} Retour Menu Principal\n:");
-				System.out.println();
+				System.out.println("{" + (MyAgencyManager.getListeMandats().size() + 1) + "} Retour Menu Principal");
+				System.out.print("\n:");
 				
 				
 				int idMandat = 0;
@@ -171,7 +207,8 @@ public class CommandeVoirs extends Commande {
 				System.out.println("o= Que faire sur ce Mandat ? =o");
 				System.out.println("{1} Voir");
 				System.out.println("{2} Modifier");
-				System.out.println("{3} Annuler\n:");
+				System.out.println("{3} Annuler");
+				System.out.print("\n:");
 				
 				int operationM = 0;
 				do{
@@ -182,8 +219,19 @@ public class CommandeVoirs extends Commande {
 					}
 				}while(operationM <= 0 ||operationM >= 4 );
 				
-				System.out.println("Operation "+operationM+" sur Client "+idMandat);
-				
+				switch(operationM){
+					case 1:
+						System.out.println("\n" + MyAgencyManager.getListeMandats().get(idMandat-1).toString());
+						System.out.println("____\n");
+						this.execute();
+						break;
+					case 2:
+						this.execute();
+						break;
+					case 3:
+						this.execute();
+						break;
+				}
 				break;
 				
 		//Publicitées
@@ -193,8 +241,8 @@ public class CommandeVoirs extends Commande {
 				for (int i = 0; i < MyAgencyManager.getListePubs().size(); i++) {
 					System.out.println("	[" + (i + 1) + "] " + MyAgencyManager.getListePubs().get(i));
 				}
-				System.out.println("{" + (MyAgencyManager.getListePubs().size() + 1) + "} Retour Menu Principal\n:");
-				System.out.println();
+				System.out.println("{" + (MyAgencyManager.getListePubs().size() + 1) + "} Retour Menu Principal");
+				System.out.print("\n:");
 				
 				
 				int idPub = 0;
@@ -213,7 +261,8 @@ public class CommandeVoirs extends Commande {
 				System.out.println("o= Que faire sur cette Publicitée ? =o");
 				System.out.println("{1} Voir");
 				System.out.println("{2} Modifier");
-				System.out.println("{3} Annuler\n:");
+				System.out.println("{3} Annuler");
+				System.out.print("\n:");
 				
 				int operationP = 0;
 				do{
@@ -224,8 +273,19 @@ public class CommandeVoirs extends Commande {
 					}
 				}while(operationP <= 0 ||operationP >= 5 );
 				
-				System.out.println("Operation "+operationP+" sur Client "+idPub);
-				
+				switch(operationP){
+					case 1:
+						System.out.println("\n" + MyAgencyManager.getListePubs().get(idPub-1).toString());
+						System.out.println("____\n");
+						this.execute();
+						break;
+					case 2:
+						this.execute();
+						break;
+					case 3:
+						this.execute();
+						break;
+				}
 				break;
 		}
 	}

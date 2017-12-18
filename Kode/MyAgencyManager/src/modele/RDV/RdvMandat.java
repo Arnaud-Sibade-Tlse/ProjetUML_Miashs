@@ -14,4 +14,9 @@ public class RdvMandat extends RDV{
 		return null;
 		//TODO
 	}
+	
+	public String toString(){
+		return "RDV Mandat \n ID Client Vendeur : " + this.getClient().getNom() +
+				"\nDate RDV : " + this.getDateRDV().toString();
+	}
 }
