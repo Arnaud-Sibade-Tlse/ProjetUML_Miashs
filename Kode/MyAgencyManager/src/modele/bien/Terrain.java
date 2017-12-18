@@ -4,8 +4,8 @@ public class Terrain extends Bien{
 	private double surfaceTotale;
 	private double longueurFacade;
 	
-	public Terrain(int id, String Addresse, Orientation o, double lF, double sT) {
-		super(id, Addresse, o);
+	public Terrain(int id, String Addresse, Orientation o,long prix, double lF, double sT) {
+		super(id, Addresse, o, prix);
 		this.longueurFacade = lF;
 		this.surfaceTotale = sT;
 	}
