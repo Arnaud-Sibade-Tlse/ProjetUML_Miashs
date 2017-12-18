@@ -7,8 +7,8 @@ public class Maison extends Bien {
 	private Terrain terrain;
 	private String moyenChauff;
 	
-	protected Maison(int nP, int nE, double sH, Terrain t, String mC,int id, String Addresse, Orientation o) {
-		super(id, Addresse, o);
+	protected Maison(int id, String Addresse, Orientation o,long prix,int nP, int nE, double sH, Terrain t, String mC) {
+		super(id, Addresse, o, prix);
 		this.nbPiece = nP;
 		this.nbEtage = nE;
 		this.surfaceHabitable = sH;
