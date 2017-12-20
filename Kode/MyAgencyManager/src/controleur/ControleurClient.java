@@ -162,7 +162,6 @@ public class ControleurClient {
 	
 	public void modifClient(int idClient){
 		Client clientAmodif = MyAgencyManager.getListeClients().get(idClient);
-		MyAgencyManager.getListeClients().remove(idClient);
 		
 		int nbMax;
 		System.out.println("Quoi changer ?");
@@ -268,10 +267,54 @@ public class ControleurClient {
 				clientAmodif.setNumTel(numTel);
 				break;
 			case 4:
+				String mail;
+				
+				System.out.print("Mail :");
+				do{
+					try{
+						mail = sc.next();
+					}catch(Exception e){
+						mail = "";
+						System.out.println("Mauvaise saisie");
+						sc.next();
+					}
+				}while(!Pattern.matches("^[a-z0-9._-]+@[a-z0-9._-]{2,}.[a-z]{2,4}$", mail));
+
+				clientAmodif.setMail(mail);
 				break;
 			case 5:
+				String formeJuri;
+				
+				System.out.print("Forme Juridique :");
+				do{
+					try{
+						formeJuri = sc.next();
+					}catch(Exception e){
+						formeJuri = "";
+						System.out.println("Mauvaise saisie");
+						sc.next();
+					}
+				}while(!Pattern.matches("^[a-zA-Z ]+$", formeJuri));
+
+				clientAmodif.setFormeJuridique(formeJuri);
+				
 				break;
 			case 6:
+				
+				String nSIREN;
+				
+				System.out.print("N° SIREN :");
+				do{
+					try{
+						nSIREN = sc.next();
+					}catch(Exception e){
+						nSIREN = "";
+						System.out.println("Mauvaise saisie");
+						sc.next();
+					}
+				}while(!Pattern.matches("^[0-9]{9}$", nSIREN));
+
+				clientAmodif.setnSIREN(nSIREN);
 				break;
 		}
 	}
