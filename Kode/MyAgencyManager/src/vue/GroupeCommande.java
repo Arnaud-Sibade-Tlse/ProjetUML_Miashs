@@ -36,7 +36,7 @@ public class GroupeCommande {
 		}while(saisie <= 0 ||saisie > sousCommande.size() + 1 );
 		
 		if(saisie == sousCommande.size() + 1){
-			Interface.accueil.exec();
+			Timmo.accueil.exec();
 		}
 		else{
 			sousCommande.get(saisie-1).execute();

@@ -3,7 +3,7 @@ package vue;
 import modele.MyAgencyManager;
 import modele.client.*;
 
-public class Interface {
+public class Timmo {
 
 	public static GroupeCommande accueil = new GroupeCommande();
 	
@@ -11,11 +11,9 @@ public class Interface {
 	
 	public static void main(String[] args) {
 		
-		MyAgencyManager mAM = new MyAgencyManager();
-		
 		Client c1 = new ClientPhysique("testee","1 rue labas","0123456789","jsp@gmail.fr");
 		
-		mAM.getListeClients().add(c1);
+		MyAgencyManager.getListeClients().add(c1);
 		
 		/*
 		 * Gérer Client

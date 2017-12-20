@@ -1,8 +1,8 @@
 package vue;
 
-import java.io.IOException;
 import java.util.Scanner;
 
+import controleur.ControleurClient;
 import modele.MyAgencyManager;
 
 public class CommandeVoirs extends Commande {
@@ -35,11 +35,13 @@ public class CommandeVoirs extends Commande {
 						idClient = sc.nextInt();
 					}catch(Exception e){
 						idClient = 0;
+						System.out.println("Mauvaise saisie");
+						sc.next();
 					}
 				}while(idClient <= 0 ||idClient > MyAgencyManager.getListeClients().size() + 1 );
 
 				if(idClient == MyAgencyManager.getListeClients().size() +1 ){
-					Interface.accueil.exec();
+					Timmo.accueil.exec();
 				}
 				
 				System.out.println("o= Que faire sur ce Client ? =o");
@@ -54,6 +56,8 @@ public class CommandeVoirs extends Commande {
 						operationC = sc.nextInt();
 					}catch(Exception e){
 						operationC = 0;
+						System.out.println("Mauvaise saisie");
+						sc.next();
 					}
 				}while(operationC <= 0 ||operationC >= 4 );
 				
@@ -64,8 +68,8 @@ public class CommandeVoirs extends Commande {
 						this.execute();
 						break;
 					case 2:
-						//new ControleurClient
-						//cc.modifClient(idClient);
+						ControleurClient cc = new ControleurClient();
+						cc.modifClient(idClient-1);
 						this.execute();
 						break;
 					case 3:
@@ -95,7 +99,7 @@ public class CommandeVoirs extends Commande {
 				}while(idBien <= 0 ||idBien > MyAgencyManager.getListeBiens().size() + 1 );
 
 				if(idBien == MyAgencyManager.getListeBiens().size() +1 ){
-					Interface.accueil.exec();
+					Timmo.accueil.exec();
 				}
 				
 				System.out.println("o= Que faire sur ce Bien ? =o");
@@ -149,7 +153,7 @@ public class CommandeVoirs extends Commande {
 				}while(idRDV <= 0 ||idRDV > MyAgencyManager.getListeRDVs().size() + 1 );
 
 				if(idRDV == MyAgencyManager.getListeRDVs().size() +1 ){
-					Interface.accueil.exec();
+					Timmo.accueil.exec();
 				}
 				
 				System.out.println("o= Que faire sur ce RDV ? =o");
@@ -199,11 +203,13 @@ public class CommandeVoirs extends Commande {
 						idMandat = sc.nextInt();
 					}catch(Exception e){
 						idMandat = 0;
+						System.out.println("Mauvaise saisie");
+						sc.next();
 					}
 				}while(idMandat <= 0 ||idMandat > MyAgencyManager.getListeMandats().size() + 1 );
 
 				if(idMandat == MyAgencyManager.getListeMandats().size() +1 ){
-					Interface.accueil.exec();
+					Timmo.accueil.exec();
 				}
 				
 				System.out.println("o= Que faire sur ce Mandat ? =o");
@@ -218,6 +224,8 @@ public class CommandeVoirs extends Commande {
 						operationM = sc.nextInt();
 					}catch(Exception e){
 						operationM = 0;
+						System.out.println("Mauvaise saisie");
+						sc.next();
 					}
 				}while(operationM <= 0 ||operationM >= 4 );
 				
@@ -253,11 +261,13 @@ public class CommandeVoirs extends Commande {
 						idPub = sc.nextInt();
 					}catch(Exception e){
 						idPub = 0;
+						System.out.println("Mauvaise saisie");
+						sc.next();
 					}
 				}while(idPub <= 0 ||idPub > MyAgencyManager.getListePubs().size() + 1 );
 
 				if(idPub == MyAgencyManager.getListePubs().size() +1 ){
-					Interface.accueil.exec();
+					Timmo.accueil.exec();
 				}
 				
 				System.out.println("o= Que faire sur cette Publicitée ? =o");
@@ -272,6 +282,8 @@ public class CommandeVoirs extends Commande {
 						operationP = sc.nextInt();
 					}catch(Exception e){
 						operationP = 0;
+						System.out.println("Mauvaise saisie");
+						sc.next();
 					}
 				}while(operationP <= 0 ||operationP >= 5 );
 				

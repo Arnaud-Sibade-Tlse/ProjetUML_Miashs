@@ -17,23 +17,23 @@ public class CommandeCreer extends Commande {
 			case "c":
 				ControleurClient cc = new ControleurClient();
 				cc.creerClient();
-				Interface.accueil.exec();
+				Timmo.accueil.exec();
 				break;
 			case "b":
 				System.out.println("Créer-Bien");
-				Interface.accueil.exec();
+				Timmo.accueil.exec();
 				break;
 			case "r":
 				System.out.println("Créer-RDV");
-				Interface.accueil.exec();
+				Timmo.accueil.exec();
 				break;
 			case "m":
 				System.out.println("Créer-Mandat");
-				Interface.accueil.exec();
+				Timmo.accueil.exec();
 				break;
 			case "p":
 				System.out.println("Créer-Pub");
-				Interface.accueil.exec();
+				Timmo.accueil.exec();
 				break;
 		}
 	}

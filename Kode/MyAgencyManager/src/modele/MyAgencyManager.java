@@ -11,19 +11,12 @@ import modele.autres.Publicites;
 
 public class MyAgencyManager {
 	
-	private static List<Client> listeClients;
-	private static List<Bien> listeBiens;
-	private static List<RDV> listeRDVs;
-	private static List<Mandat> listeMandats;
-	private static List<Publicites> listePubs;
-	
-	public MyAgencyManager(){
-		MyAgencyManager.listeClients = new ArrayList<Client>();
-		MyAgencyManager.listeBiens = new ArrayList<Bien>();
-		MyAgencyManager.listeRDVs = new ArrayList<RDV>();
-		MyAgencyManager.listeMandats = new ArrayList<Mandat>();
-		MyAgencyManager.listePubs = new ArrayList<Publicites>();
-	}
+	private static List<Client> listeClients = new ArrayList<Client>();
+	private static List<Bien> listeBiens = new ArrayList<Bien>();
+	private static List<RDV> listeRDVs = new ArrayList<RDV>();
+	private static List<Mandat> listeMandats = new ArrayList<Mandat>();
+	private static List<Publicites> listePubs = new ArrayList<Publicites>();
+
 	
 	public static List<Client> getListeClients() {
 		return listeClients;
