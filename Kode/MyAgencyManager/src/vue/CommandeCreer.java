@@ -1,5 +1,7 @@
 package vue;
 
+import controleur.ControleurClient;
+
 public class CommandeCreer extends Commande {
 
 	private String type;
@@ -13,9 +15,8 @@ public class CommandeCreer extends Commande {
 	public void execute() {
 		switch(this.type){
 			case "c":
-				System.out.println("Créer-Client");
-				//new ControleurClient
-				//cc.creerClient();
+				ControleurClient cc = new ControleurClient();
+				cc.creerClient();
 				Interface.accueil.exec();
 				break;
 			case "b":

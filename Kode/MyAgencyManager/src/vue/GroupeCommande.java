@@ -31,6 +31,7 @@ public class GroupeCommande {
 			}catch(Exception e){
 				saisie = 0;
 				System.out.println("Mauvaise saisie");
+				sc.next();
 			}
 		}while(saisie <= 0 ||saisie > sousCommande.size() + 1 );
 		
