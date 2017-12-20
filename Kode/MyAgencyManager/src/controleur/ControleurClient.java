@@ -62,7 +62,6 @@ public class ControleurClient {
 			}
 		}while(!Pattern.matches("^[0-9]*,[a-zA-Z0-9 ]+$", adresse));
 		
-		System.out.println();
 		String codeP;
 		
 		System.out.print("Code Postal :");
@@ -76,7 +75,6 @@ public class ControleurClient {
 			}
 		}while(!Pattern.matches("^[0-9]{5}+$", codeP));
 
-		System.out.println();
 		String ville;
 		
 		System.out.print("Ville :");

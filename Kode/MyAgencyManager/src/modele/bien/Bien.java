@@ -2,12 +2,14 @@ package modele.bien;
 
 public abstract class Bien {
 	private int id;
-	private String Adresse;
+	private String nom;
+	private String adresse;
 	private Orientation orient;
 	private long prix;
 	
-	public Bien(int id, String Addresse, Orientation o, long prix){
-		this.Adresse = Addresse;
+	public Bien(int id,String nom, String Addresse, Orientation o, long prix){
+		this.adresse = Addresse;
+		this.nom = nom;
 		this.id=id;
 		this.orient = o;
 		this.setPrix(prix);
@@ -17,10 +19,10 @@ public abstract class Bien {
 		return id;
 	}
 	public String getAdresse() {
-		return Adresse;
+		return adresse;
 	}
 	public void setAdresse(String adresse) {
-		Adresse = adresse;
+		this.adresse = adresse;
 	}
 	public Orientation getOriente() {
 		return orient;
@@ -35,6 +37,14 @@ public abstract class Bien {
 
 	public void setPrix(long prix) {
 		this.prix = prix;
+	}
+
+	public String getNom() {
+		return nom;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
 	}
 	
 }

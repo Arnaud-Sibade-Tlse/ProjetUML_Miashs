@@ -6,8 +6,8 @@ public class Appartement extends Bien {
 	private double chargeMensuelles;
 	private double surface;
 	
-	public Appartement( int id, String Addresse, Orientation o,long prix,int nP, int e,double cM, double s) {
-		super(id,Addresse, o, prix);
+	public Appartement( int id, String nom, String Addresse, Orientation o,long prix,int nP, int e,double cM, double s) {
+		super(id, nom, Addresse, o, prix);
 		this.chargeMensuelles = cM;
 		this.etage = e;
 		this.nbPiece = nP;
@@ -47,7 +47,8 @@ public class Appartement extends Bien {
 	}
 	
 	public String toString(){
-		return "ID Bien (Appartement) : " + this.getId() + 
+		return "ID Bien (Appartement) : " + this.getId() +
+				"Nom : " + this.getNom() +  
 				"\nAdresse : " + this.getAdresse() +
 				"\nOrientation : " + this.getOriente()+
 				"\nPrix : " + this.getPrix() + "€" +

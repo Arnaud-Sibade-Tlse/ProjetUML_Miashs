@@ -4,8 +4,8 @@ public class Terrain extends Bien{
 	private double surfaceTotale;
 	private double longueurFacade;
 	
-	public Terrain(int id, String Addresse, Orientation o,long prix, double lF, double sT) {
-		super(id, Addresse, o, prix);
+	public Terrain(int id, String nom, String Addresse, Orientation o,long prix, double lF, double sT) {
+		super(id, nom, Addresse, o, prix);
 		this.longueurFacade = lF;
 		this.surfaceTotale = sT;
 	}
@@ -27,6 +27,7 @@ public class Terrain extends Bien{
 	}
 	public String toString(){
 		return "ID Bien (Maison) : " + this.getId() + 
+				"Nom : " + this.getNom() + 
 				"\nAdresse : " + this.getAdresse() +
 				"\nOrientation : " + this.getOriente()+
 				"\nPrix : " + this.getPrix() + "€" +

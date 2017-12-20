@@ -67,6 +67,7 @@ public class Mandat {
 	
 	public String toString() {
 		return "Bien : " + this.getPropriete().getId() + 
+				"Nom Bien : " + this.getPropriete().getNom() + 
 				"\nPropietaire : " + this.getVendeur().getNom() + 
 				"\nDate fin Mandat : " + this.getDateButoir().toString() +
 				"\nAcheteur potentiel : "+ this.getAcheteur().getNom()

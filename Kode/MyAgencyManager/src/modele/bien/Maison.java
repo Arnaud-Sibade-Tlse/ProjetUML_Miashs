@@ -7,8 +7,8 @@ public class Maison extends Bien {
 	private Terrain terrain;
 	private String moyenChauff;
 	
-	public Maison(int id, String Addresse, Orientation o,long prix,int nP, int nE, double sH, Terrain t, String mC) {
-		super(id, Addresse, o, prix);
+	public Maison(int id,String nom, String Addresse, Orientation o,long prix,int nP, int nE, double sH, Terrain t, String mC) {
+		super(id,nom , Addresse, o, prix);
 		this.nbPiece = nP;
 		this.nbEtage = nE;
 		this.surfaceHabitable = sH;
@@ -58,6 +58,7 @@ public class Maison extends Bien {
 	
 	public String toString(){
 		return "ID Bien (Maison) : " + this.getId() + 
+				"Nom : " + this.getNom() + 
 				"\nAdresse : " + this.getAdresse() +
 				"\nOrientation : " + this.getOriente()+
 				"\nPrix : " + this.getPrix() + "€" +

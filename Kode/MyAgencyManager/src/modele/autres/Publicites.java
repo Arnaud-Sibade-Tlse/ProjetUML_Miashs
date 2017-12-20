@@ -39,6 +39,7 @@ public class Publicites {
 	
 	public String toString(){
 		return "Bien : " + this.getBienConcerner().getId() +
+				"Nom Bien : " + this.getBienConcerner().getNom() +  
 				"\nLien : " + this.getLien() ;
 	}
 }
