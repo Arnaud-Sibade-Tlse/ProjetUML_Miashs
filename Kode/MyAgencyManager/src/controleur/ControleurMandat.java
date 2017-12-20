@@ -5,7 +5,5 @@ public class ControleurMandat {
 		//TODO
 	}
 	
-	public void afficherMandat(){
-		//TODO
-	}
+
 }

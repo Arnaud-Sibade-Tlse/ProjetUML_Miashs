@@ -5,7 +5,5 @@ public class ControleurPublicites {
 		//TODO
 	}
 	
-	public void afficherPub(){
-		//TODO
-	}
+
 }
