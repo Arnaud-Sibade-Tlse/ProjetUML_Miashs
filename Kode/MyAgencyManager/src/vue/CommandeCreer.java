@@ -14,6 +14,8 @@ public class CommandeCreer extends Commande {
 		switch(this.type){
 			case "c":
 				System.out.println("Créer-Client");
+				//new ControleurClient
+				//cc.creerClient();
 				Interface.accueil.exec();
 				break;
 			case "b":

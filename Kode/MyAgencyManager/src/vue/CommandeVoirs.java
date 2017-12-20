@@ -64,6 +64,8 @@ public class CommandeVoirs extends Commande {
 						this.execute();
 						break;
 					case 2:
+						//new ControleurClient
+						//cc.modifClient(idClient);
 						this.execute();
 						break;
 					case 3:

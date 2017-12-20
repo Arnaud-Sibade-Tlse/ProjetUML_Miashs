@@ -30,6 +30,7 @@ public class GroupeCommande {
 				saisie = sc.nextInt();
 			}catch(Exception e){
 				saisie = 0;
+				System.out.println("Mauvaise saisie");
 			}
 		}while(saisie <= 0 ||saisie > sousCommande.size() + 1 );
 		
