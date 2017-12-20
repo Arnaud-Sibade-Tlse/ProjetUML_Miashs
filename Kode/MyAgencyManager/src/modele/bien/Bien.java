@@ -6,7 +6,7 @@ public abstract class Bien {
 	private Orientation orient;
 	private long prix;
 	
-	protected Bien(int id, String Addresse, Orientation o, long prix){
+	public Bien(int id, String Addresse, Orientation o, long prix){
 		this.Adresse = Addresse;
 		this.id=id;
 		this.orient = o;
@@ -15,9 +15,6 @@ public abstract class Bien {
 	
 	public int getId() {
 		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
 	}
 	public String getAdresse() {
 		return Adresse;

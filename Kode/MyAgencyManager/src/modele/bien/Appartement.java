@@ -6,8 +6,8 @@ public class Appartement extends Bien {
 	private double chargeMensuelles;
 	private double surface;
 	
-	protected Appartement( int id, String Addresse, Orientation o,long prix,int nP, int e,double cM, double s) {
-		super(id, Addresse, o, prix);
+	public Appartement( int id, String Addresse, Orientation o,long prix,int nP, int e,double cM, double s) {
+		super(id,Addresse, o, prix);
 		this.chargeMensuelles = cM;
 		this.etage = e;
 		this.nbPiece = nP;

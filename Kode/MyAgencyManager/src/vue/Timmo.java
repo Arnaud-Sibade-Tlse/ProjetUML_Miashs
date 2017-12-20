@@ -7,8 +7,6 @@ public class Timmo {
 
 	public static GroupeCommande accueil = new GroupeCommande();
 	
-	//http://baptiste-wicht.developpez.com/tutoriels/java/outils/executables/#LIII-B
-	
 	public static void main(String[] args) {
 		
 		Client c1 = new ClientPhysique("testee","1 rue labas","0123456789","jsp@gmail.fr");
@@ -32,7 +30,7 @@ public class Timmo {
 		 * Gérer Bien
 		 */
 		Commande gererBien = new Commande("Gérer un Bien");
-			Commande creerBien = new CommandeCreer("Créer un Bien","b");
+			Commande creerBien = new CommandeCreerBien("Créer un Bien");
 			Commande voirBiens = new CommandeVoirs("Voir la liste des Biens","b");
 	
 		GroupeCommande SousGererB = new GroupeCommande();

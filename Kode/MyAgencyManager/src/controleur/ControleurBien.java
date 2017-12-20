@@ -3,15 +3,17 @@ package controleur;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
+import modele.MyAgencyManager;
+import modele.bien.Orientation;
+import modele.bien.Terrain;
+import modele.bien.Maison;
+import modele.bien.Appartement;
+
 public class ControleurBien {
 	
 	Scanner sc = new Scanner(System.in);
-
-	public void verifBien(){
-		//TODO
-	}
 	
-	public void creerBien(){
+	public void creerBien(int idBien){
 		System.out.println("__Creation d'un Bien");
 		System.out.print("Bien Maison, Appartement ou Terrain ? (M/A/T) ? ");
 		
@@ -22,7 +24,7 @@ public class ControleurBien {
 			}catch(Exception e){
 				type = "";
 			}
-		}while(type.equals("A") || type.equals("M") || type.equals("T"));
+		}while(!Pattern.matches("^[MAT]$", type));
 		
 		System.out.println();
 		
@@ -33,22 +35,21 @@ public class ControleurBien {
 			System.out.println("____Creation d'un Appartement");
 		} else {
 			System.out.println("____Creation d'un Terrain");
-
 		}
 		
 		String nom;
 		System.out.print("Nom :");
 		do{
 			try{
-				nom = sc.next();
+				nom = sc.nextLine();
 			}catch(Exception e){
 				nom = "";
+				System.out.println("Mauvaise saisie");
+				sc.nextLine();
 			}
 		}while(!Pattern.matches("^[a-zA-Z ]+$", nom));
 		
-		System.out.println("ok");
-		String adresse;
-		String numTel;
-		String mail;
+		MyAgencyManager.getListeBiens().add(new Terrain(idBien,"blabla",Orientation.NORD,100000,14.5,12.0));
+
 	}
 }

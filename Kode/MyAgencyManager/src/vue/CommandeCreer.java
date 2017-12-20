@@ -1,5 +1,6 @@
 package vue;
 
+import controleur.ControleurBien;
 import controleur.ControleurClient;
 
 public class CommandeCreer extends Commande {
@@ -17,10 +18,6 @@ public class CommandeCreer extends Commande {
 			case "c":
 				ControleurClient cc = new ControleurClient();
 				cc.creerClient();
-				Timmo.accueil.exec();
-				break;
-			case "b":
-				System.out.println("Créer-Bien");
 				Timmo.accueil.exec();
 				break;
 			case "r":
