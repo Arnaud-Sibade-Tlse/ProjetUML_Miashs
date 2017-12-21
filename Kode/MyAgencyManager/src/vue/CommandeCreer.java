@@ -1,7 +1,8 @@
 package vue;
 
-import controleur.ControleurBien;
 import controleur.ControleurClient;
+import controleur.ControleurPublicites;
+import controleur.ControleurRDV;
 
 public class CommandeCreer extends Commande {
 
@@ -21,7 +22,8 @@ public class CommandeCreer extends Commande {
 				Timmo.accueil.exec();
 				break;
 			case "r":
-				System.out.println("Créer-RDV");
+				ControleurRDV cr = new ControleurRDV();
+				cr.creerRDV();
 				Timmo.accueil.exec();
 				break;
 			case "m":
@@ -29,7 +31,8 @@ public class CommandeCreer extends Commande {
 				Timmo.accueil.exec();
 				break;
 			case "p":
-				System.out.println("Créer-Pub");
+				ControleurPublicites cp = new ControleurPublicites();
+				cp.creerPub();
 				Timmo.accueil.exec();
 				break;
 		}

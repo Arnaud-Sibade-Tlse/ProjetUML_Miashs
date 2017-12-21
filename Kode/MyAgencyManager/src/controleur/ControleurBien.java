@@ -97,10 +97,6 @@ public class ControleurBien {
 						bonTerrain = true;
 					}
 				}
-				
-				System.out.println(idTerrain <= 0);
-				System.out.println(bonTerrain);
-				System.out.println(idTerrain <= 0 && !bonTerrain);
 			}while(idTerrain <= 0 || !bonTerrain);
 			
 

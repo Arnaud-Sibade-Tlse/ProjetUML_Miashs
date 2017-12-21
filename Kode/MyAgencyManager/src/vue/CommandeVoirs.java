@@ -4,6 +4,8 @@ import java.util.Scanner;
 
 import controleur.ControleurBien;
 import controleur.ControleurClient;
+import controleur.ControleurPublicites;
+import controleur.ControleurRDV;
 import modele.MyAgencyManager;
 
 public class CommandeVoirs extends Commande {
@@ -181,6 +183,8 @@ public class CommandeVoirs extends Commande {
 						this.execute();
 						break;
 					case 2:
+						ControleurRDV cc = new ControleurRDV();
+						cc.modifClient(idRDV-1);
 						this.execute();
 						break;
 					case 3:
@@ -217,8 +221,7 @@ public class CommandeVoirs extends Commande {
 				
 				System.out.println("o= Que faire sur ce Mandat ? =o");
 				System.out.println("{1} Voir");
-				System.out.println("{2} Modifier");
-				System.out.println("{3} Annuler");
+				System.out.println("{2} Annuler");
 				System.out.print("\n:");
 				
 				int operationM = 0;
@@ -239,9 +242,6 @@ public class CommandeVoirs extends Commande {
 						this.execute();
 						break;
 					case 2:
-						this.execute();
-						break;
-					case 3:
 						this.execute();
 						break;
 				}
@@ -297,6 +297,8 @@ public class CommandeVoirs extends Commande {
 						this.execute();
 						break;
 					case 2:
+						ControleurPublicites cc = new ControleurPublicites();
+						cc.modifPub(idPub-1);
 						this.execute();
 						break;
 					case 3:
