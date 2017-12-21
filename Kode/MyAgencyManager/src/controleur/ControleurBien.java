@@ -183,10 +183,38 @@ public class ControleurBien {
 		case 5:
 			switch(appart){
 				case 1:
+					bienAmodif.setLongueurFacade(saisirLongueurFacade());
 					break;
 				case 2:
+					bienAmodif.setNbPiece(saisirNbPiece());
 					break;
 				case 3:
+					bienAmodif.setNbPiece(saisirNbPiece());
+					break;
+			}
+		case 6:
+			switch(appart){
+				case 1:
+					bienAmodif.setSurfaceTotale(saisirSurfaceTot());
+					break;
+				case 2:
+					bienAmodif.setNbEtage(saisirnbEtage());
+					break;
+				case 3:
+					bienAmodif.setEtage(saisirEtage());
+					break;
+			}
+			break;
+		case 7:
+			bienAmodif.setSurfaceHabitable(saisirSurfaceH());
+			break;
+		case 8:
+			switch(appart){
+				case 2:
+					bienAmodif.setMoyenChauff(saisirChauff());
+					break;
+				case 3:
+					bienAmodif.setChargeMensuelles(saisirCharges());
 					break;
 			}
 			break;

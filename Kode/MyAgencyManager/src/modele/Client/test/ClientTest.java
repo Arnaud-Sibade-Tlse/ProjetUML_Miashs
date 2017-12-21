@@ -1,4 +1,4 @@
-package modele.Client.test;
+package modele.client.test;
 
 import static org.junit.Assert.*;
 
