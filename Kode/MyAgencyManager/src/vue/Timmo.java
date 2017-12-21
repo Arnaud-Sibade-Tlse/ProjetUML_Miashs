@@ -82,7 +82,7 @@ public class Timmo {
 		/*
 		 * Quitter l'application
 		 */
-		Commande sauvQuit= new CommandeQuit("Sauvegarder et Quitter");
+		Commande sauvQuit= new CommandeQuit("Quitter (!!! ne sauvegarde pas)");
 		
 		accueil.add(gererClient);
 		accueil.add(gererBien);
