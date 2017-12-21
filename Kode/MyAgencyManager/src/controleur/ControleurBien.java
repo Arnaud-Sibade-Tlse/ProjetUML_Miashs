@@ -122,7 +122,7 @@ public class ControleurBien {
 	}
 
 
-	public void modifBlient(int idBlient){
+	public void modifBien(int idBlient){
 		Bien bienAmodif = MyAgencyManager.getListeBiens().get(idBlient);
 		
 		int appart ;

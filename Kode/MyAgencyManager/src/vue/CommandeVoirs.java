@@ -2,6 +2,7 @@ package vue;
 
 import java.util.Scanner;
 
+import controleur.ControleurBien;
 import controleur.ControleurClient;
 import modele.MyAgencyManager;
 
@@ -124,6 +125,8 @@ public class CommandeVoirs extends Commande {
 						this.execute();
 						break;
 					case 2:
+						ControleurBien cb = new ControleurBien();
+						cb.modifBien(idBien-1);
 						this.execute();
 						break;
 					case 3:
