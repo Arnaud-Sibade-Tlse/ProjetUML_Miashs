@@ -1,0 +1,26 @@
+@startuml
+
+title Diagramme des cas d'utilisations
+
+:Agent: as A
+
+rectangle MyAgencyManager{
+
+  (Gérer Clients) as GC
+  (Gérer Rdvs) as GR
+  (Gérer Biens) as GB
+  (Gérer Pubs) as GP
+  (Faire Stats) as S
+  (Chercher Bien) as CB
+}
+
+left to right direction
+A --> GC
+A --> GB
+A --> GR
+A --> GP
+A --> S
+A --> CB
+
+@enduml
+

@@ -1,0 +1,13 @@
+@startuml
+
+title Diagramme Séquence de la vue d'un Dossier
+
+actor User as U
+
+U -> MyAgencyManager :getListeDossiers()
+
+MyAgencyManager -> vueDossier : afficherDossier(d)
+
+U //-- vueDossier :afficher Dossier
+
+@enduml

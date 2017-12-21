@@ -1,0 +1,18 @@
+@startuml
+
+title Diagramme Séquence de la modification d'un RDV
+
+actor User as U
+
+U -> MyAgencyManager :getListeRDVs()
+
+MyAgencyManager -> vueRDV : vueRDV(rdv)
+
+U //-- vueRDV :afficher RDV
+
+U -> vueRDV :Saisit Information(s)
+U -> vueRDV :Valide saisie
+
+vueRDV -> ControleurRDV :Verifie Information(s)
+ControleurRDV -> RDV :Modifie Information(s)
+@enduml

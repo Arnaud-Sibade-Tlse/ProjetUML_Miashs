@@ -1,0 +1,45 @@
+@startuml
+
+title Diagramme Séquence de la recherche d'un Bien
+
+actor Agent as A
+actor Client as C
+
+
+A -> vueAccueil
+A //-- vueAccueil : Menu Principal
+
+vueAccueil -> vueRecherche : rechercher()
+A //-- vueRecherche : Quel type de Bien ?
+
+A -> C : Demander type de Bien
+C -> A : Donner préférence
+
+A -> vueRecherche : Saisir type bien
+
+alt Terrain
+vueRecherche -> vueTerrain : rechercheTerrain()
+A //-- vueTerrain : vue de recherche d'un terrain
+A -> vueTerrain : Saisit préférence Client
+vueTerrain -> MyAgencyManager : m = getMandats()
+vueTerrain -> vueTerrain : select where m.bienConserne ~= info
+vueTerrain --// vueRecherche : afficher Biens
+
+else Maison
+vueRecherche -> vueMaison : rechercheMaison()
+A //-- vueMaison : vue de recherche d'une maison
+A -> vueMaison : Saisit préférence Client
+vueMaison -> MyAgencyManager : m = getMandats()
+vueMaison -> vueMaison : select where m.bienConserne ~= info
+vueMaison --// vueRecherche : afficher Biens
+
+else Appartement
+vueRecherche -> vueAppart : rechercheAppart()
+A //-- vueAppart : vue de recherche d'un appartement
+A -> vueAppart : Saisit préférence Client
+vueAppart -> MyAgencyManager : m = getMandats()
+vueAppart -> vueAppart : select where m.bienConserne ~= info
+vueAppart --// vueRecherche : afficher Biens
+end
+
+@enduml

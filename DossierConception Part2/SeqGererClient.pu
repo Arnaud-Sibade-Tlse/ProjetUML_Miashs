@@ -1,0 +1,64 @@
+@startuml
+
+title Diagramme Séquence de la gestion d'un Client
+
+actor Agent as A
+
+
+A -> vueAllClients 
+A //-- vueAllClients :afficher liste Clients
+
+alt Créer Client
+vueAllClients -> vueClients :nouveauClient()
+
+
+A //-- vueClients :afficher Client vide
+
+A -> vueClients : saisie Information(s)
+A -> vueClients : valide
+
+vueClients -> ControleurClients : verifClient()
+
+ControleurClients -> ControleurClients : c = new Client(info)
+ControleurClients -> MyAgencyManager : listeClients.add(c)
+
+MyAgencyManager -> vueAllClients : actualiserListe()
+
+A //-- vueAllClients : afficher nouvelle liste
+
+
+else Afficher Client
+vueAllClients -> vueClients : afficherClients(c)
+A //-- vueClients :afficher c
+
+else Modifier Client
+
+vueAllClients -> vueClients : modifierClients(c)
+A //-- vueClients :afficher c
+
+A -> vueClients : saisie Information(s)
+A -> vueClients : valide
+
+vueClients -> ControleurClients : verifClient()
+
+ControleurClients -> MyAgencyManager : listeClients.get(c)
+MyAgencyManager -> ControleurClients : c
+
+loop attribute a in c
+ControleurClients -> ControleurClients :c.setA(info.a)
+end
+
+ControleurClients -> vueClients : afficherClients()
+A //-- vueClients :afficher c
+
+else Supprimer Client
+vueAllClients -> ControleurClients : supprimerClient(c)
+A //-- ControleurClients : Supprimer ?
+alt oui
+ControleurClients -> MyAgencyManager : listeClients.remove(c)
+MyAgencyManager -> vueAllClients : actualiserListe()
+
+end
+A //-- vueAllClients : afficher nouvelle liste
+end
+@enduml

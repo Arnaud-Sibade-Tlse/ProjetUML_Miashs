@@ -1,0 +1,40 @@
+@startuml
+
+title Diagramme des cas d'utilisations
+
+:Personne: as P
+:Entreprise: as E
+:Agence: as A
+
+rectangle Application{
+  (Vendre Maison) as Vendre
+  (Acheter Maison) as Acheter
+  (S'incrire dans l'agence) As Inscript
+  (Rdv Mandat de Vente) as RDVm
+  (Se renseigner sur Maison) as getInfoMaison
+  (Faire sa publicité) as pub
+  (Faire ses statistiques) as stats
+  (Rdv Promesse de vente) as RDVp
+  (Verser Promesse de Vente) as givePromesse
+  (Se rétracter) as retract
+  (Verser reste Prix de vente) as giveFull
+  (Proposer Visite) as RDVv
+}
+
+
+left to right direction
+E -down-|> P
+P --> Vendre
+P --> Acheter
+P -> Inscript
+P --> RDVm
+A --> getInfoMaison
+A --> pub
+A --> stats
+P --> RDVp
+RDVp <.. givePromesse :<<extends>>
+givePromesse ..> retract :<<include>>
+givePromesse ..> giveFull :<<include>>
+A --> RDVv
+
+@enduml

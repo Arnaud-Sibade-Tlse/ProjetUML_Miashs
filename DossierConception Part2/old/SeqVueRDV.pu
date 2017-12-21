@@ -1,0 +1,13 @@
+@startuml
+
+title Diagramme Séquence de la vue d'un RDV
+
+actor User as U
+
+U -> MyAgencyManager :getListeRDVs()
+
+MyAgencyManager -> vueRDV : afficherRDV(rdv)
+
+U //-- vueRDV :afficher RDV
+
+@enduml

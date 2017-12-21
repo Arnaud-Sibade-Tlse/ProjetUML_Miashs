@@ -1,0 +1,13 @@
+@startuml
+
+title Diagramme Séquence de la vue d'un Client
+
+actor User as U
+
+U -> MyAgencyManager :getListeClients()
+
+MyAgencyManager -> vueClient : afficherClient(c)
+
+U //-- vueClient :afficher Client
+
+@enduml

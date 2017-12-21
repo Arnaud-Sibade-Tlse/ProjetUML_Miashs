@@ -1,0 +1,163 @@
+@startuml
+
+title Diagramme des Classes vue Modele
+
+package Modele <<Folder>> {
+
+    package modeleAgence<<Frame>> {
+        class MyAgencyManager {
+        -ArrayList<Client> listeClients
+        -ArrayList<Mandat> listeMandats
+        -ArrayList<Publicites> listePublicites
+        -ArrayList<RDV> listeRdvs
+        }
+    }
+    package modeleClient <<Frame>> {
+      abstract class Client [[java:modele.client.Client]] {
+      	-String nom
+      	-String adresse
+      	-String numTel
+      	-String mail
+      	+Client(String nom, String adrs, String num, String mail)
+      }
+        class ClientPhysique extends Client{
+            +void ClientPhysique(String nom,String adresse,String numTel,String mail)
+        }
+
+        class ClientMoral [[java:modele.client.ClientMoral]] {
+        	-String formeJuridique
+        	-String nSIREN
+        	+ClientMoral(String nom, String adrs, String num, String mail, String juri, String no)
+
+        }
+        Client <|-- ClientMoral
+
+        class Recherche{
+            -Orientation orient
+            -double surfaceTotale
+            -double longueurFacade
+            -double surfaceHabitable
+            -int nbEtage
+            -String moyenChauff
+            -int nbPiece
+            -int etage
+            -double chargesMensuelles
+        }
+    }
+
+    package modeleBien <<Frame>> {
+        enum Orientation{
+            NORD
+            SUD
+            EST
+            OUEST
+         }
+         abstract class Bien [[java:modele.bien.Bien]] {
+         	-int id
+         	-String Adresse
+         	-Orientation orient
+         	-long prix
+         	#Bien(int id, String Addresse, Orientation o, long prix)
+
+         }
+         class Terrain [[java:modele.bien.Terrain]] {
+         	-double surfaceTotale
+         	-double longueurFacade
+         	+Terrain(int id, String Addresse, Orientation o, long prix, double lF, double sT))
+         }
+         Bien <|-- Terrain
+        class Maison [[java:modele.bien.Maison]] {
+        	-int nbPiece
+        	-int nbEtage
+        	-double surfaceHabitable
+        	-Terrain terrain
+        	-String moyenChauff
+        	#Maison(int id, String Addresse, Orientation o, long prix, int nP, int nE, double sH, Terrain t, String mC)
+        }
+        Bien <|-- Maison
+        class Appartement [[java:modele.bien.Appartement]] {
+        	-int nbPiece
+        	-int etage
+        	-double chargeMensuelles
+        	-double surface
+        	#Appartement(int id, String Addresse, Orientation o, long prix, int nP, int e, double cM, double s)
+        }
+        Terrain  o- "0.*" Maison
+        Bien <|-- Appartement
+    }
+
+    package modeleRDV <<Frame>> {
+        abstract RDV{
+            -Client client
+            +void RDV(Client c)
+        }
+
+        class RdvMandat extends RDV{
+            +Mandat creerMandat()
+        }
+
+        class RdvPromesseVente extends RDV{
+            +void setAcheteur(Client c)
+        }
+
+        class RdvRecherche extends RDV{
+            +ArrayList<Biens> rechercher(Client c)
+        }
+
+    }
+
+    package modeleAutres <<Frame>> {
+
+        class Mandat{
+            -Bien maison
+            -Client vendeur
+            -Date butoir
+            -Client acheteur = null
+            -boolean sommeTotalVerse
+        }
+		enum TypePub{
+		    HTML
+		    VIDEO
+		    IMAGE
+		    TEXTE
+		}
+        class Publicites{
+            -TypePub typPub
+            -Bien bienConserne
+            -String lien
+            +void Publicites(TypePub type, Bien bienC, String link)
+        }
+
+
+    }
+}
+
+
+package Vue <<Folder>> {
+}
+
+package Controleur <<Folder>> {
+}
+
+Vue --> Modele : READ
+Vue -> Controleur : WRITE
+Controleur -> Modele : MODIFY
+
+MyAgencyManager"1" <-- "*" Mandat : listeMandats
+MyAgencyManager "1" <--- "*" Client :listeClients
+MyAgencyManager "1" <-- "*" RDV : listeRdvs
+MyAgencyManager "1" <-- "*" Publicites : listePublicites
+
+left to right direction
+
+Client "1" o- "1" Recherche : souhait
+
+Mandat "1" o- "1" Client : vendeur
+Mandat "1" o- "0.1" Client : acheteur
+
+Mandat "1" o- "1" Bien : Maison
+
+Bien <- Orientation : orient
+Publicites <- TypePub : typPub
+
+@enduml

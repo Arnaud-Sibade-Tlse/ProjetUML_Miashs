@@ -1,0 +1,7 @@
+@startuml
+
+title Diagramme Séquence du Changement d'etat d'un dossier
+
+actor User as U
+U -> Dossier:ChangerEtat(Etat e)
+@enduml

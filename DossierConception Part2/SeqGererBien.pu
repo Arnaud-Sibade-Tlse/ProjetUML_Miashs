@@ -1,0 +1,64 @@
+@startuml
+
+title Diagramme Séquence de la gestion d'un Bien
+
+actor Agent as A
+
+
+A -> vueAllBiens 
+A //-- vueAllBiens :afficher liste Biens
+
+alt Créer Bien
+vueAllBiens -> vueBiens :nouveauBien()
+
+
+A //-- vueBiens :afficher Bien vide
+
+A -> vueBiens : saisie Information(s)
+A -> vueBiens : valide
+
+vueBiens -> ControleurBiens : verifBien()
+
+ControleurBiens -> ControleurBiens : b = new Biens(info)
+ControleurBiens -> MyAgencyManager : listeBiens.add(b)
+
+MyAgencyManager -> vueAllBiens : actualiserListe()
+
+A //-- vueAllBiens : afficher nouvelle liste
+
+
+else Afficher Bien
+vueAllBiens -> vueBiens : afficherBiens(b)
+A //-- vueBiens :afficher b
+
+else Modifier Bien
+
+vueAllBiens -> vueBiens : modifierBiens(b)
+A //-- vueBiens :afficher b
+
+A -> vueBiens : saisie Information(s)
+A -> vueBiens : valide
+
+vueBiens -> ControleurBiens : verifBien()
+
+ControleurBiens -> MyAgencyManager : listeBiens.get(b)
+MyAgencyManager -> ControleurBiens : b
+
+loop attribute a in b
+ControleurBiens -> ControleurBiens :b.setA(info.a)
+end
+
+ControleurBiens -> vueBiens : afficherBiens()
+A //-- vueBiens :afficher b
+
+else Supprimer Bien
+vueAllBiens -> ControleurBiens : supprimerBien(b)
+A //-- ControleurBiens : Supprimer ?
+alt oui
+ControleurBiens -> MyAgencyManager : listeBiens.remove(b)
+MyAgencyManager -> vueAllBiens : actualiserListe()
+
+end
+A //-- vueAllBiens : afficher nouvelle liste
+end
+@enduml

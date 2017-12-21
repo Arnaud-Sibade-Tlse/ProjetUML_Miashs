@@ -1,0 +1,45 @@
+@startuml
+
+title Diagramme des cas d'utilisations
+
+:Users: as U
+
+rectangle nom{
+  (Créer Client) as CC
+  (Créer Bien) as CB
+  (Créer RDV) as CR
+  (Créer Dossier Vente) as CD
+  (Créer Publicitée) as CP
+ajouter fonctionnalité (créer mandat , effetuer vente)
+créer rdv est include avant actions
+(Afficher Statistiques) as AS
+
+  (Voir Information) as VI
+  (Modifier Information) as MI
+  (Bien) a séprarer 
+  (Client)
+  (RDV)
+
+
+}
+left to right direction
+U -->CC
+U -->CB
+U -->CR
+U -->CD
+U -->CP
+
+U -->AS
+
+U -->VI
+U -->MI
+
+VI ..>(Bien)
+VI ..>(Client)
+VI ..>(RDV)
+
+MI ..>(Bien)
+MI ..>(Client)
+MI ..>(RDV)
+
+@enduml

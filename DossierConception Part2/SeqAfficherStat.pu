@@ -1,0 +1,13 @@
+@startuml
+
+title Diagramme Séquence de l'affichage des Statistiques
+
+actor Agent as A
+
+A -> MyAgencyManager
+
+MyAgencyManager -> vueStat : getStat(MyAgencyManager)
+
+A //-- vueStat : statistiques calcullées
+
+@enduml
