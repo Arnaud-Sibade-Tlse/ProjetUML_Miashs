@@ -58,7 +58,7 @@ public class Maison extends Bien {
 	
 	public String toString(){
 		return "ID Bien (Maison) : " + this.getId() + 
-				"Nom : " + this.getNom() + 
+				"\nNom : " + this.getNom() + 
 				"\nAdresse : " + this.getAdresse() +
 				"\nOrientation : " + this.getOriente()+
 				"\nPrix : " + this.getPrix() + "€" +
