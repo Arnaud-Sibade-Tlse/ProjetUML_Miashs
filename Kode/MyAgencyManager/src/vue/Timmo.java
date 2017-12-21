@@ -1,6 +1,8 @@
 package vue;
 
 import modele.MyAgencyManager;
+
+import modele.bien.Terrain;
 import modele.client.*;
 
 public class Timmo {
@@ -11,7 +13,10 @@ public class Timmo {
 		
 		Client c1 = new ClientPhysique("testee","1 rue labas","0123456789","jsp@gmail.fr");
 		
+		Terrain ter = new Terrain(1, "terr","adre", null, 0, 0, 0);
+		
 		MyAgencyManager.getListeClients().add(c1);
+		MyAgencyManager.getListeBiens().add(ter);
 		
 		/*
 		 * Gérer Client

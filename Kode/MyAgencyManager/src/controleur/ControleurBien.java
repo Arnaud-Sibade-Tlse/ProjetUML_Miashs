@@ -80,6 +80,7 @@ public class ControleurBien {
 				}
 			}
 			
+			boolean bonTerrain = false;
 			System.out.print("ID Terrain :");
 			do{
 				try{
@@ -89,7 +90,18 @@ public class ControleurBien {
 					System.out.println("Mauvaise saisie");
 					sc.next();
 				}
-			}while(idTerrain <= 0 || MyAgencyManager.getListeBiens().contains(idTerrain));
+
+				for(int currentI : listeID){
+					System.out.println(currentI+" vs "+idTerrain);
+					if(currentI == idTerrain){
+						bonTerrain = true;
+					}
+				}
+				
+				System.out.println(idTerrain <= 0);
+				System.out.println(bonTerrain);
+				System.out.println(idTerrain <= 0 && !bonTerrain);
+			}while(idTerrain <= 0 || !bonTerrain);
 			
 
 			Terrain t = (Terrain)MyAgencyManager.getListeBiens().get(idTerrain-1);
