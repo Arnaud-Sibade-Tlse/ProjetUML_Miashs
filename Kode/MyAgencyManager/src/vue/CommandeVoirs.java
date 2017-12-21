@@ -86,7 +86,7 @@ public class CommandeVoirs extends Commande {
 				System.out.println("--Choisir un Bien dans la liste\n");
 				
 				for (int i = 0; i < MyAgencyManager.getListeBiens().size(); i++) {
-					System.out.println("	[" + (i + 1) + "] " + MyAgencyManager.getListeBiens().get(i).getAdresse());
+					System.out.println("	[" + (i + 1) + "] " + MyAgencyManager.getListeBiens().get(i).getClass().getSimpleName() +" "+ MyAgencyManager.getListeBiens().get(i).getNom());
 				}
 				System.out.println("{" + (MyAgencyManager.getListeBiens().size() + 1) + "} Retour Menu Principal");
 				System.out.print("\n:");

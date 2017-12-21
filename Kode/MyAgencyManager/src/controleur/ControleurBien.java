@@ -7,8 +7,6 @@ import java.util.regex.Pattern;
 import modele.MyAgencyManager;
 import modele.bien.Orientation;
 import modele.bien.Terrain;
-import modele.client.Client;
-import modele.client.ClientPhysique;
 import vue.Timmo;
 import modele.bien.Maison;
 import modele.bien.Appartement;
