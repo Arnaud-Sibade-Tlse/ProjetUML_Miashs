@@ -1,23 +1,21 @@
 package modele.autres;
 
-import java.util.Date;
-
 import modele.bien.Bien;
 import modele.client.Client;
 
 public class Mandat {
 	private Bien propriete;
 	private Client vendeur;
-	private Date dateButoir;
+	private String dateButoir;
 	private Client acheteur;
 	private boolean sommeTotalVerse;
 
-	public Mandat(Bien b, Client vendeur, Date dB) {
+	public Mandat(Bien b, Client vendeur, String finMandat) {
 		this.setAcheteur(null);
 		this.setSommeTotalVerse(false);
 		this.setPropriete(b);
 		this.setVendeur(vendeur);
-		this.setDateButoir(dB);
+		this.setDateButoir(finMandat);
 	}
 
 	public Bien getPropriete() {
@@ -36,11 +34,11 @@ public class Mandat {
 		this.vendeur = vendeur;
 	}
 
-	public Date getDateButoir() {
+	public String getDateButoir() {
 		return dateButoir;
 	}
 
-	public void setDateButoir(Date dateButoir) {
+	public void setDateButoir(String dateButoir) {
 		this.dateButoir = dateButoir;
 	}
 
@@ -66,11 +64,17 @@ public class Mandat {
 	}
 	
 	public String toString() {
+		String acheteur;
+		if(this.getAcheteur() == null){
+			acheteur = "null";
+		}else{
+			acheteur = this.getAcheteur().getNom();
+		}
 		return "Bien : " + this.getPropriete().getId() + 
 				"Nom Bien : " + this.getPropriete().getNom() + 
 				"\nPropietaire : " + this.getVendeur().getNom() + 
 				"\nDate fin Mandat : " + this.getDateButoir().toString() +
-				"\nAcheteur potentiel : "+ this.getAcheteur().getNom()
-				+"\nSomme totale versee : " +this.getTotalVersee();
+				"\nAcheteur potentiel : "+ acheteur +
+				"\nSomme totale versee : " +this.getTotalVersee();
 	}
 }

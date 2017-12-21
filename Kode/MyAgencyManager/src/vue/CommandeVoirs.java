@@ -183,8 +183,8 @@ public class CommandeVoirs extends Commande {
 						this.execute();
 						break;
 					case 2:
-						ControleurRDV cc = new ControleurRDV();
-						cc.modifClient(idRDV-1);
+						ControleurRDV cr = new ControleurRDV();
+						cr.modifRDV(idRDV-1);
 						this.execute();
 						break;
 					case 3:

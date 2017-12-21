@@ -1,24 +1,22 @@
 package modele.RDV;
 
-import java.util.Date;
-
 import modele.client.Client;
 
 public abstract class RDV {
-	private Date dateRDV;
+	private String dateRDV;
 	private Client client;
 	//private Mandat mandat;
 	
-	protected RDV(Date d, Client c){
+	protected RDV(String d, Client c){
 		this.setClient(c);
 		this.setDateRDV(d);
 	}
 
-	public Date getDateRDV() {
+	public String getDateRDV() {
 		return dateRDV;
 	}
 
-	public void setDateRDV(Date dateRDV) {
+	public void setDateRDV(String dateRDV) {
 		this.dateRDV = dateRDV;
 	}
 

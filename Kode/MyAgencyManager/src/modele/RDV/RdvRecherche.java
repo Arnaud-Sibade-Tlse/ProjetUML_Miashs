@@ -8,7 +8,7 @@ import modele.client.Client;
 
 public class RdvRecherche extends RDV {
 
-	public RdvRecherche(Date d, Client c) {
+	public RdvRecherche(String d, Client c) {
 		super(d, c);
 	}
 	

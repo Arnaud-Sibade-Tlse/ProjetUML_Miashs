@@ -58,47 +58,8 @@ public class ControleurBien {
 			
 			String chauff = saisirChauff();
 
-			int idTerrain = -1;
-			ArrayList<Integer> listeID = new ArrayList<Integer>();
-			
-			System.out.println("Emplacement :");
-			for(Bien currentT : MyAgencyManager.getListeBiens()){
-				if(currentT instanceof Terrain){
-					System.out.println("-"+currentT.getId()+"- "+currentT.getNom());
-					listeID.add(currentT.getId());
-				}
-			}
-
-			if(listeID.size()==0){
-				try {
-					throw new Exception("Aucun Terrain disponible");
-				} catch (Exception e) {
-					System.out.println("Aucun Terrain disponible, creez-en un pour pouvoir creer une Maison\n");
-					Timmo.accueil.exec();
-				}
-			}
-			
-			boolean bonTerrain = false;
-			System.out.print("ID Terrain :");
-			do{
-				try{
-					idTerrain = sc.nextInt();
-				}catch(Exception e){
-					idTerrain = -1;
-					System.out.println("Mauvaise saisie");
-					sc.next();
-				}
-
-				for(int currentI : listeID){
-					System.out.println(currentI+" vs "+idTerrain);
-					if(currentI == idTerrain){
-						bonTerrain = true;
-					}
-				}
-			}while(idTerrain <= 0 || !bonTerrain);
-			
-
-			Terrain t = (Terrain)MyAgencyManager.getListeBiens().get(idTerrain-1);
+		
+			Terrain t = saisirTerrain();
 			
 			System.out.println("\nMaison cree !");
 			MyAgencyManager.getListeBiens().add(new Maison(idBien,nom,finalAdress,or,prix,nbPiece,nbEtage,surfaceH,t,chauff));
@@ -126,7 +87,6 @@ public class ControleurBien {
 			MyAgencyManager.getListeBiens().add(new Terrain(idBien,nom,finalAdress,or,prix,lgFacade,surfaceT));
 		}
 	}
-
 
 	public void modifBien(int idBlient){
 		Bien bienAmodif = MyAgencyManager.getListeBiens().get(idBlient);
@@ -485,5 +445,50 @@ public class ControleurBien {
 			}
 		}while(surfaceT <= 0.0);
 		return surfaceT;
+	}
+	
+	private Terrain saisirTerrain() {
+		int idTerrain = -1;
+		ArrayList<Integer> listeID = new ArrayList<Integer>();
+		
+		System.out.println("Emplacement :");
+		for(Bien currentT : MyAgencyManager.getListeBiens()){
+			if(currentT instanceof Terrain){
+				System.out.println("-"+currentT.getId()+"- "+currentT.getNom());
+				listeID.add(currentT.getId());
+			}
+		}
+
+		if(listeID.size()==0){
+			try {
+				throw new Exception("Aucun Terrain disponible");
+			} catch (Exception e) {
+				System.out.println("Aucun Terrain disponible, creez-en un pour pouvoir creer une Maison\n");
+				Timmo.accueil.exec();
+			}
+		}
+		
+		boolean bonTerrain = false;
+		System.out.print("ID Terrain :");
+		do{
+			try{
+				idTerrain = sc.nextInt();
+			}catch(Exception e){
+				idTerrain = -1;
+				System.out.println("Mauvaise saisie");
+				sc.next();
+			}
+
+			for(int currentI : listeID){
+				System.out.println(currentI+" vs "+idTerrain);
+				if(currentI == idTerrain){
+					bonTerrain = true;
+				}
+			}
+		}while(idTerrain <= 0 || !bonTerrain);
+		
+
+		Terrain t = (Terrain)MyAgencyManager.getListeBiens().get(idTerrain-1);
+		return t;
 	}
 }

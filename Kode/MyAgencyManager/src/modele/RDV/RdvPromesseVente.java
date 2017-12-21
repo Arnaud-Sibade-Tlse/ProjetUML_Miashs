@@ -1,7 +1,6 @@
 package modele.RDV;
 
-import java.util.Date;
-
+import modele.MyAgencyManager;
 import modele.autres.Mandat;
 import modele.client.Client;
 
@@ -9,31 +8,23 @@ public class RdvPromesseVente extends RDV {
 	private Client acheteurPotentiel;
 	private Mandat mandat;
 	
-	public RdvPromesseVente(Date d, Client c, Client aP) {
+	public RdvPromesseVente(String d, Client c, Client aP, Mandat m) {
 		super(d, c);
-		this.setAcheteurPotentiel(aP);
+		acheteurPotentiel =aP;
+		this.mandat = m;
+		majMandat();
 	}
 	
-	public void setAcheteur(){
-		mandat.setAcheteur(acheteurPotentiel);
+	private void majMandat() {
+		System.out.println("Mandat mis à jour");
+		MyAgencyManager.getListeMandats().get(MyAgencyManager.getListeMandats().indexOf(mandat)).setAcheteur(acheteurPotentiel);
+		System.out.println();
 	}
 
-	public Client getAcheteurPotentiel() {
-		return acheteurPotentiel;
-	}
-
-	public void setAcheteurPotentiel(Client acheteurPotentiel) {
-		this.acheteurPotentiel = acheteurPotentiel;
-	}
-	
-	public Mandat getMandat(){
-		return this.mandat;
-	}
-	
 	public String toString(){
 		return "RDV Promesse de Vente \n ID Vendeur : " + this.getClient().getNom() +
-				"\nDate RDV : " + this.getDateRDV().toString() +
-				"\nID Acheteur : " + this.getAcheteurPotentiel().getNom() +
+				"\nDate RDV : " + this.getDateRDV() +
+				"\nID Acheteur : " + this.acheteurPotentiel.getNom() +
 				"\nID Bien Concernee : " + this.mandat.getPropriete().getId() +
 				"Nom Bien : " + this.mandat.getPropriete().getNom();  
 	}
