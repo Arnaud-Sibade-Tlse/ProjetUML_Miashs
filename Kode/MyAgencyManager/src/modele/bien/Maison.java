@@ -2,8 +2,8 @@ package modele.bien;
 
 public class Maison extends Bien {
 	
-	public Maison(int id,String nom, String Addresse, Orientation o,long prix,int nP, int nE, double sH, Terrain t, String mC) {
-		super(id,nom , Addresse, o, prix,nP,nE,sH,t,mC);
+	public Maison(int id,String nom, Orientation o,long prix,int nP, int nE, double sH, Terrain t, String mC) {
+		super(id,nom , o, prix,nP,nE,sH,t,mC);
 	}
 
 	

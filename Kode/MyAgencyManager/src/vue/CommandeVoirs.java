@@ -163,8 +163,7 @@ public class CommandeVoirs extends Commande {
 				
 				System.out.println("o= Que faire sur ce RDV ? =o");
 				System.out.println("{1} Voir");
-				System.out.println("{2} Modifier");
-				System.out.println("{3} Annuler");
+				System.out.println("{2} Annuler");
 				System.out.print("\n:");
 				
 				int operationRDV = 0;
@@ -174,7 +173,7 @@ public class CommandeVoirs extends Commande {
 					}catch(Exception e){
 						operationRDV = 0;
 					}
-				}while(operationRDV <= 0 ||operationRDV >= 4 );
+				}while(operationRDV <= 0 ||operationRDV >= 3 );
 				
 				switch(operationRDV){
 					case 1:
@@ -183,8 +182,6 @@ public class CommandeVoirs extends Commande {
 						this.execute();
 						break;
 					case 2:
-						ControleurRDV cr = new ControleurRDV();
-						cr.modifRDV(idRDV-1);
 						this.execute();
 						break;
 					case 3:

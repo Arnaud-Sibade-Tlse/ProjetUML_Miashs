@@ -47,7 +47,7 @@ public class ControleurClient {
 				System.out.println("Mauvaise saisie");
 				sc.nextLine();
 			}
-		}while(!Pattern.matches("^[a-zA-Z ]+$", nom));
+		}while(!Pattern.matches("^[a-zA-Z- ]+$", nom));
 		
 		String adresse;
 

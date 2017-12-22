@@ -3,21 +3,21 @@ package modele.autres;
 import modele.bien.Bien;
 
 public class Publicites {
-	private TypePub typePube;
+	private String typePube;
 	private Bien bienConcerner;
 	private String lien;
 	
-	public Publicites(TypePub tP, Bien b, String l){
+	public Publicites(String tP, Bien b, String l){
 		this.setTypePube(tP);
 		this.setBienConcerner(b);
 		this.setLien(l);
 	}
 
-	public TypePub getTypePube() {
+	public String getTypePube() {
 		return typePube;
 	}
 
-	public void setTypePube(TypePub typePube) {
+	public void setTypePube(String typePube) {
 		this.typePube = typePube;
 	}
 
@@ -40,6 +40,7 @@ public class Publicites {
 	public String toString(){
 		return "Bien : " + this.getBienConcerner().getId() +
 				"Nom Bien : " + this.getBienConcerner().getNom() +  
+				"Type Publicite : " + this.getTypePube() +
 				"\nLien : " + this.getLien() ;
 	}
 }

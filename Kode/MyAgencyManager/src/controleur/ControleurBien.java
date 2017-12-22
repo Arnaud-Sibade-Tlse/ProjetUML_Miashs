@@ -62,7 +62,7 @@ public class ControleurBien {
 			Terrain t = saisirTerrain();
 			
 			System.out.println("\nMaison cree !");
-			MyAgencyManager.getListeBiens().add(new Maison(idBien,nom,finalAdress,or,prix,nbPiece,nbEtage,surfaceH,t,chauff));
+			MyAgencyManager.getListeBiens().add(new Maison(idBien,nom,or,prix,nbPiece,nbEtage,surfaceH,t,chauff));
 		}
 		else if(type.equals("A")){
 			

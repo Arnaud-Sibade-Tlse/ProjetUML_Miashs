@@ -71,11 +71,6 @@ public class ControleurRDV {
 		}
 
 	}
-
-	public void modifRDV(int i) {
-		// TODO Auto-generated method stub
-
-	}
 	
 	private String saisirDate() {
 		String date;
@@ -160,7 +155,6 @@ public class ControleurRDV {
 	}
 	
 	private Mandat saisirMandat() {
-		//TODO
 		int idMandat = -1;
 		ArrayList<Integer> listeID = new ArrayList<Integer>();
 		

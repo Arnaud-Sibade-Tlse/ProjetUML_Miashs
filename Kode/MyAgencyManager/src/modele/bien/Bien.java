@@ -147,9 +147,9 @@ public abstract class Bien {
 		this.surfaceTotale = sT;
 	}
 	
-	public Bien(int id,String nom, String Addresse, Orientation o,long prix,int nP, int nE, double sH, Terrain t, String mC) {
+	public Bien(int id,String nom, Orientation o,long prix,int nP, int nE, double sH, Terrain t, String mC) {
 		//Maison
-		this.adresse = Addresse;
+		this.adresse = t.getAdresse();
 		this.nom = nom;
 		this.id=id;
 		this.orient = o;
