@@ -6,25 +6,25 @@ Pour cela , importer le projet /Kode/MyAgencyManager depuis le repos git
 Il faut ensuite executer la class Timmo.java presente dans le package vue
 (desoler notre .jar na pas fonctionner)
 
-#Creation des Objets
-##Creation d'un Bien
+# Creation des Objets
+## Creation d'un Bien
 * ID : automatique
 * Nom : Pas de caracteres speciaux ni de chifres
 * Adresse : commencer par un chiffre puis une virgule et suite de caracteres /!\ ne pas mettre d'espace apres la virgule	 	ex : 2,rue de la court
 * Orientation : lettre en majuscule : O, E, N, S
 * Prix : un nombre sans virgule
 
-###Creation d'une Maison
+### Creation d'une Maison
 * nbEtage : int
 * surface habitable : double
 * terrain : le terrain doit avoir etait creer au prealable
 * moyen chauffe : string sans caractere speciaux
 
-###Creation d'un Terrain
+### Creation d'un Terrain
 * longueurFacade : double
 * surfaceTotal : double
 
-###Creation d'un Appartement
+### Creation d'un Appartement
 * nbPiece : int
 * etage : int
 * Charges mensuelles : double
