@@ -11,13 +11,6 @@ public class Timmo {
 	
 	public static void main(String[] args) {
 		
-		Client c1 = new ClientPhysique("testee","1 rue labas","0123456789","jsp@gmail.fr");
-		
-		Terrain ter = new Terrain(1, "terr","adre", null, 0, 0, 0);
-		
-		MyAgencyManager.getListeClients().add(c1);
-		MyAgencyManager.getListeBiens().add(ter);
-		
 		/*
 		 * Gérer Client
 		 */
