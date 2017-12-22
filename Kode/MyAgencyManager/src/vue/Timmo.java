@@ -12,10 +12,10 @@ public class Timmo {
 	public static void main(String[] args) {
 		
 		/*
-		 * Gérer Client
+		 * Gerer Client
 		 */
-		Commande gererClient = new Commande("Gérer un Client");
-			Commande creerClient = new CommandeCreer("Créer un Client","c");
+		Commande gererClient = new Commande("Gerer un Client");
+			Commande creerClient = new CommandeCreer("Creer un Client","c");
 			Commande voirClients = new CommandeVoirs("Voir la liste des Clients","c");
 
 		GroupeCommande SousGererC = new GroupeCommande();
@@ -25,10 +25,10 @@ public class Timmo {
 		
 		
 		/*
-		 * Gérer Bien
+		 * Gerer Bien
 		 */
-		Commande gererBien = new Commande("Gérer un Bien");
-			Commande creerBien = new CommandeCreerBien("Créer un Bien");
+		Commande gererBien = new Commande("Gerer un Bien");
+			Commande creerBien = new CommandeCreerBien("Creer un Bien");
 			Commande voirBiens = new CommandeVoirs("Voir la liste des Biens","b");
 	
 		GroupeCommande SousGererB = new GroupeCommande();
@@ -37,10 +37,10 @@ public class Timmo {
 		gererBien.setGroupeCommande(SousGererB);
 		
 		/*
-		 * Gérer RDV
+		 * Gerer RDV
 		 */
-		Commande gererRDV = new Commande("Gérer un RDV");
-			Commande creerRDV = new CommandeCreer("Créer un RDV","r");
+		Commande gererRDV = new Commande("Gerer un RDV");
+			Commande creerRDV = new CommandeCreer("Creer un RDV","r");
 			Commande voirRDVs = new CommandeVoirs("Voir la liste des RDVs","r");
 	
 		GroupeCommande SousGererRDV = new GroupeCommande();
@@ -50,9 +50,9 @@ public class Timmo {
 
 			
 		/*
-		 * Gérer Mandats
+		 * Gerer Mandats
 		 */
-		Commande gererMandant = new Commande("Gérer un Mandat");
+		Commande gererMandant = new Commande("Gerer un Mandat");
 			Commande voirMandants = new CommandeVoirs("Voir la liste des Mandats","m");
 	
 		GroupeCommande SousGererM = new GroupeCommande();
@@ -60,11 +60,11 @@ public class Timmo {
 		gererMandant.setGroupeCommande(SousGererM);
 			
 		/*
-		 * Gérer Publicités
+		 * Gerer Publicites
 		 */
-		Commande gererPub = new Commande("Gérer une Publicité");
-			Commande creerPub = new CommandeCreer("Créer une Publicité","p");
-			Commande voirPubs = new CommandeVoirs("Voir la liste des Publicitées","p");
+		Commande gererPub = new Commande("Gerer une Publicite");
+			Commande creerPub = new CommandeCreer("Creer une Publicite","p");
+			Commande voirPubs = new CommandeVoirs("Voir la liste des Publicitees","p");
 	
 		GroupeCommande SousGererP = new GroupeCommande();
 			SousGererP.add(creerPub);
