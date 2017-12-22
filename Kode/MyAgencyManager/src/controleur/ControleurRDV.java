@@ -41,6 +41,7 @@ public class ControleurRDV {
 		if (type.equals("M")) {
 			System.out.println("____Creation d'un Mandat");
 
+			System.out.println("Vendeur ?");
 			Client vendeur = saisirClient();
 			
 			Bien Bconcerne = saisirBien();
@@ -54,6 +55,7 @@ public class ControleurRDV {
 		} else if (type.equals("P")) {
 			System.out.println("____Creation d'une Promesse de Vente");
 
+			System.out.println("Acheteur ?");
 			Client acheteur = saisirClient();
 			
 			Mandat Mconcernee = saisirMandat();

@@ -142,7 +142,9 @@ public class CommandeVoirs extends Commande {
 				System.out.println("--Choisir un RDV dans la liste\n");
 				
 				for (int i = 0; i < MyAgencyManager.getListeRDVs().size(); i++) {
-					System.out.println("	[" + (i + 1) + "] " + MyAgencyManager.getListeRDVs().get(i));
+					System.out.println("	[" + (i + 1) + "] " + MyAgencyManager.getListeRDVs().get(i).getClass().getSimpleName() + " le " +
+							MyAgencyManager.getListeRDVs().get(i).getDateRDV()
+							+ " avec " +MyAgencyManager.getListeRDVs().get(i).getClient().getNom());
 				}
 				System.out.println("{" + (MyAgencyManager.getListeRDVs().size() + 1) + "} Retour Menu Principal");
 				System.out.print("\n:");
@@ -195,7 +197,8 @@ public class CommandeVoirs extends Commande {
 				System.out.println("--Choisir un Mandat dans la liste\n");
 				
 				for (int i = 0; i < MyAgencyManager.getListeMandats().size(); i++) {
-					System.out.println("	[" + (i + 1) + "] " + MyAgencyManager.getListeMandats().get(i));
+					System.out.println("	[" + (i + 1) + "] Mandat sur Bien id " + MyAgencyManager.getListeMandats().get(i).getPropriete().getId()
+							+" "+ MyAgencyManager.getListeMandats().get(i).getPropriete().getNom() );
 				}
 				System.out.println("{" + (MyAgencyManager.getListeMandats().size() + 1) + "} Retour Menu Principal");
 				System.out.print("\n:");
@@ -249,7 +252,9 @@ public class CommandeVoirs extends Commande {
 				System.out.println("--Choisir une Publicité dans la liste\n");
 				
 				for (int i = 0; i < MyAgencyManager.getListePubs().size(); i++) {
-					System.out.println("	[" + (i + 1) + "] " + MyAgencyManager.getListePubs().get(i));
+					System.out.println("	[" + (i + 1) + "] Publicitee " + MyAgencyManager.getListePubs().get(i).getTypePube() +" sur Bien id "
+							+ MyAgencyManager.getListePubs().get(i).getBienConcerner().getId() + " " 
+							+ MyAgencyManager.getListePubs().get(i).getBienConcerner().getNom());
 				}
 				System.out.println("{" + (MyAgencyManager.getListePubs().size() + 1) + "} Retour Menu Principal");
 				System.out.print("\n:");
