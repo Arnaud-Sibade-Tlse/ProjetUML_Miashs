@@ -1,10 +1,5 @@
 package vue;
 
-import modele.MyAgencyManager;
-
-import modele.bien.Terrain;
-import modele.client.*;
-
 public class Timmo {
 
 	public static GroupeCommande accueil = new GroupeCommande();
