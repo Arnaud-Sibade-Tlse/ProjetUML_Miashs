@@ -1,10 +1,8 @@
 # ProjetUML_Miashs
 
 Pour lancer notre application :
-
-
-
-
+Il faut ouvrir le projet sur eclipse
+Pour cela , importer le projet depuis votre repos git
 
 
 #Creation des Objets
