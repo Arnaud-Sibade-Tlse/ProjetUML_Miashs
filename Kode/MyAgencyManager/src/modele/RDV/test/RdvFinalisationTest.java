@@ -9,6 +9,7 @@ import org.junit.Test;
 
 import modele.RDV.RDV;
 import modele.RDV.RdvFinalisation;
+import modele.autres.Mandat;
 import modele.client.ClientPhysique;
 
 public class RdvFinalisationTest extends RDVTest{
@@ -22,7 +23,7 @@ public class RdvFinalisationTest extends RDVTest{
 
 	@Override
 	protected RDV creerRDV() {
-		return new RdvFinalisation(new Date(2000, 12, 12), new ClientPhysique("Robert", "", "", ""));
+		return new RdvFinalisation("", new ClientPhysique("Robert", "", "", ""),new Mandat(null,null,""));
 	}
 
 }

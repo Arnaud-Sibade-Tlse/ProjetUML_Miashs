@@ -20,7 +20,7 @@ public class RdvRechercheTest extends RDVTest{
 
 	@Override
 	protected RDV creerRDV() {
-		return new RdvRecherche(new Date(2000, 12, 12), new ClientPhysique("Robert", "", "", ""));
+		return new RdvRecherche("", new ClientPhysique("Robert", "", "", ""));
 	}
 
 

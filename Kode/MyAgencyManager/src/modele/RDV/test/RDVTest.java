@@ -17,7 +17,7 @@ public abstract class RDVTest {
 	
 	@Test
 	public void testDate(){
-		Date uneDate = new Date(2000, 12, 12);
+		String uneDate = "";
 		assertTrue("Bonne Date", uneDate.toString().equals(unRdv.getDateRDV().toString()));
 	}
 	
