@@ -2,8 +2,9 @@
 
 Pour lancer notre application :
 Il faut ouvrir le projet sur eclipse
-Pour cela , importer le projet depuis votre repos git
-
+Pour cela , importer le projet /Kode/MyAgencyManager depuis le repos git
+Il faut ensuite executer la class Timmo.java presente dans le package vue
+(desoler notre .jar na pas fonctionner)
 
 #Creation des Objets
 ##Creation d'un Bien
