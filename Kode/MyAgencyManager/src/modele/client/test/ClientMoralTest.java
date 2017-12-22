@@ -1,13 +1,9 @@
 package modele.client.test;
 
-import static org.junit.Assert.*;
-
 import org.junit.Before;
-import org.junit.Test;
 
 import modele.client.Client;
 import modele.client.ClientMoral;
-import modele.client.ClientPhysique;
 
 public class ClientMoralTest extends ClientTest{
 

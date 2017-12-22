@@ -5,7 +5,6 @@ import java.util.Scanner;
 import controleur.ControleurBien;
 import controleur.ControleurClient;
 import controleur.ControleurPublicites;
-import controleur.ControleurRDV;
 import modele.MyAgencyManager;
 
 public class CommandeVoirs extends Commande {

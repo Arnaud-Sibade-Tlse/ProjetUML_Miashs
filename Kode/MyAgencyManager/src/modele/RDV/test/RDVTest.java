@@ -2,9 +2,6 @@ package modele.RDV.test;
 
 import static org.junit.Assert.*;
 
-import java.util.Date;
-
-import org.junit.Before;
 import org.junit.Test;
 
 import modele.RDV.RDV;
