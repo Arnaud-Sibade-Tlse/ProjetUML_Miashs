@@ -17,7 +17,7 @@ public class GroupeCommande {
 	}
 
 	public void exec() {
-		System.out.println("*---- Choisir un élément du menu ----*\n");
+		System.out.println("*---- Choisir un element du menu ----*\n");
 		for (int i = 0; i < sousCommande.size(); i++) {
 			System.out.println("{" + (i + 1) + "} " + sousCommande.get(i).getCommande());
 		}

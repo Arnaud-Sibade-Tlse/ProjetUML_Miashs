@@ -1,7 +1,6 @@
 package modele.RDV;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 import modele.bien.Bien;
 import modele.client.Client;
